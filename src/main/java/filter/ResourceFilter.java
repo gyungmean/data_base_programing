@@ -21,7 +21,7 @@ public class ResourceFilter implements Filter {
     static {
     	resourcePrefixs.add("/course_detail");
         resourcePrefixs.add("/course_keyword_select");
-        resourcePrefixs.add("/course_matching");
+        resourcePrefixs.add("/drive_course_matching");
         resourcePrefixs.add("/driveMain");
         resourcePrefixs.add("/login");
         resourcePrefixs.add("/login_register");

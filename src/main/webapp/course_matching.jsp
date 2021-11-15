@@ -11,8 +11,8 @@
 		<title>course_matching</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="course_matching/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="course_matching/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="drive_course_matching/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="drive_course_matching/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -23,8 +23,8 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="course_matching/index.html" class="logo">
-									<span class="symbol"><img src="course_matching/images/logo.svg" alt="" /></span><span class="title">logo</span>
+								<a href="drive_course_matching/index.html" class="logo">
+									<span class="symbol"><img src="drive_course_matching/images/logo.svg" alt="" /></span><span class="title">logo</span>
 								</a>
 
 							<!-- Nav -->
@@ -41,11 +41,11 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="course_matching/index.html">Home</a></li>
-							<li><a href="course_matching/generic.html">Ipsum veroeros</a></li>
-							<li><a href="course_matching/generic.html">Tempus etiam</a></li>
-							<li><a href="course_matching/generic.html">Consequat dolor</a></li>
-							<li><a href="course_matching/elements.html">Elements</a></li>
+							<li><a href="drive_course_matching/index.html">Home</a></li>
+							<li><a href="drive_course_matching/generic.html">Ipsum veroeros</a></li>
+							<li><a href="drive_course_matching/generic.html">Tempus etiam</a></li>
+							<li><a href="drive_course_matching/generic.html">Consequat dolor</a></li>
+							<li><a href="drive_course_matching/elements.html">Elements</a></li>
 						</ul>
 					</nav>
 
@@ -62,9 +62,9 @@
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
-										<img src="course_matching/images/pic01.jpg" alt="" />
+										<img src="drive_course_matching/images/pic01.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -74,9 +74,9 @@
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="course_matching/images/pic02.jpg" alt="" />
+										<img src="drive_course_matching/images/pic02.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -86,9 +86,9 @@
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="course_matching/images/pic03.jpg" alt="" />
+										<img src="drive_course_matching/images/pic03.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -98,9 +98,9 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="course_matching/images/pic04.jpg" alt="" />
+										<img src="drive_course_matching/images/pic04.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -110,9 +110,9 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="course_matching/images/pic05.jpg" alt="" />
+										<img src="drive_course_matching/images/pic05.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -122,9 +122,9 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="course_matching/images/pic06.jpg" alt="" />
+										<img src="drive_course_matching/images/pic06.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -134,9 +134,9 @@
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="course_matching/images/pic07.jpg" alt="" />
+										<img src="drive_course_matching/images/pic07.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -146,9 +146,9 @@
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="course_matching/images/pic08.jpg" alt="" />
+										<img src="drive_course_matching/images/pic08.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -158,9 +158,9 @@
 								</article>
 								<article class="style1">
 									<span class="image">
-										<img src="course_matching/images/pic09.jpg" alt="" />
+										<img src="drive_course_matching/images/pic09.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -170,9 +170,9 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="course_matching/images/pic10.jpg" alt="" />
+										<img src="drive_course_matching/images/pic10.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -182,9 +182,9 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src=course_matching/images/pic11.jpg" alt="" />
+										<img src="drive_course_matching/images/pic11.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -194,9 +194,9 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="course_matching/images/pic12.jpg" alt="" />
+										<img src="drive_course_matching/images/pic12.jpg" alt="" />
 									</span>
-									<a href="course_matching/generic.html">
+									<a href="drive_course_matching/generic.html">
 										<h2>코스 이름</h2>
 										<div class="content">
 											<p>#테마</p>
@@ -211,11 +211,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="course_matching/assets/js/jquery.min.js"></script>
-			<script src="course_matching/assets/js/browser.min.js"></script>
-			<script src="course_matching/assets/js/breakpoints.min.js"></script>
-			<script src="course_matching/assets/js/util.js"></script>
-			<script src="course_matching/assets/js/main.js"></script>
+			<script src="drive_course_matching/assets/js/jquery.min.js"></script>
+			<script src="drive_course_matching/assets/js/browser.min.js"></script>
+			<script src="drive_course_matching/assets/js/breakpoints.min.js"></script>
+			<script src="drive_course_matching/assets/js/util.js"></script>
+			<script src="drive_course_matching/assets/js/main.js"></script>
 
 	</body>
 </html>
