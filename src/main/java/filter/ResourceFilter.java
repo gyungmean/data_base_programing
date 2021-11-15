@@ -19,12 +19,12 @@ public class ResourceFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(ResourceFilter.class);
     private static final List<String> resourcePrefixs = new ArrayList<>();
     static {
-        resourcePrefixs.add("/css");
-        resourcePrefixs.add("/js");
-        resourcePrefixs.add("/fonts");
-        resourcePrefixs.add("/images");
-        resourcePrefixs.add("/drive_course_login");
-        resourcePrefixs.add("/drive_course_matching");
+    	resourcePrefixs.add("/course_detail");
+        resourcePrefixs.add("/course_keyword_select");
+        resourcePrefixs.add("/course_matching");
+        resourcePrefixs.add("/driveMain");
+        resourcePrefixs.add("/login");
+        resourcePrefixs.add("/login_register");
     }
 
     private RequestDispatcher defaultRequestDispatcher;

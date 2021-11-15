@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.wrap {
+    height: 100%;
+    width: 100%;
+    background-image: url(img/background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+.form-wrap {
+    width: 380px;
+    height: 380px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.title {
+    margin: 30px auto;
+    text-align: center;
+    left: 50px;
+    font-weight: bold;
+}
+.input-group {
+    top: 130px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.input-email {
+    width: 45%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.submit {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #3992F3, #13D6E7);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.check-email {
+    width: 50%;
+    padding: 5px 30px;
+    cursor: pointer;
+    margin: auto;
+    background: #3992F3;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.checkbox {
+    margin: 30px 10px 30px 0;
+}
+span {
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+#register {
+    left: 50px;
+    color: #777;
+}
