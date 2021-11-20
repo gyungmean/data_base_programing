@@ -29,5 +29,5 @@ public class MatchCourseController implements Controller{
 		// courseList 객체를 request에 저장하여 코스 리스트 화면으로 이동(forwarding)
 		request.setAttribute("courseList", courseList);				
 		return "/course/matching.jsp";  //경로 수정 필요  
-    }
+	}
 }
