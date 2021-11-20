@@ -1,7 +1,9 @@
 package model.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import model.Course;
 import model.User;
 import model.dao.Course_likeDAO;
 import model.dao.UserDAO;
@@ -32,5 +34,8 @@ public class Course_likeManager {
 	
 	public int countLike(int course_id) throws SQLException, UserNotFoundException {
 		return course_likeDAO.countLike(course_id);
+	}
+	public List<Course> user_likeCourseList(int user_id) throws SQLException, UserNotFoundException {
+		return course_likeDAO.user_likeCourseList(user_id);
 	}
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.User;
+import model.Course;
 import model.Course_like;
 import model.Region;
 import model.Theme;
@@ -13,27 +14,36 @@ public class test {
 
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-		UserManager manager = UserManager.getInstance();
-		Course_likeManager manager1 = Course_likeManager.getInstance();
+		UserManager umanager = UserManager.getInstance();
+		Course_likeManager clmanager = Course_likeManager.getInstance();
+		CourseManager cmanager = CourseManager.getInstance();
 		
-//		User user1 = null;
+		
+	
+		List<Course> list = new ArrayList<Course>();
+		List<Integer> themeList = new ArrayList<Integer>();
+
+		try {
+			
+			list = clmanager.user_likeCourseList(1);
+
+		} catch(Exception e) {
+			System.out.println("실패");
+		}
+		for(Course l : list) {
+			System.out.println(l.toString());
+		}
+		
+//		List<Course> list = new ArrayList<Course>();
 //		try {
-//			user1 = manager.findUser(1);
-//		} catch(UserNotFoundException e) {
-//			System.out.println("user1 id로 user1 찾기 실패했어");
+//			list = cmanager.allCourseList();
+//		} catch(Exception e) {
+//			System.out.println("코스리스트 찾기 실패");
 //		}
 //		
-//		System.out.println("user1 정보 : " + user1.toString());
-//		
-//		User user2 = null;
-//		try {
-//			user2 = manager.findUserId("a@dongduk.ac.kr");
-//		} catch(UserNotFoundException e) {
-//			System.out.println("user2 email로 user2 찾기 실패했어");
-//		}
-//		
-//		System.out.println("user2 정보 : " + user2.toString());
-//		
+//		System.out.println("7번 코스 정보 : " + c.toString());
+		
+	
 //		User newUser2 = new User(2, "ccc", "c", "c@dongduk.ac.kr");
 //		User resultUser2 = null;
 //		int result = 0;
@@ -132,14 +142,14 @@ public class test {
 //		}
 //		System.out.println("result7 " + result7);
 		
-		int result8 = 0;
-		try {
-			result8 = manager1.countLike(4);
-		} catch(Exception e) {
-			System.out.println("result8 조회 실패했어");
-		}
-		System.out.println("result8 " + result8);
-		
+//		int result8 = 0;
+//		try {
+//			result8 = manager1.countLike(4);
+//		} catch(Exception e) {
+//			System.out.println("result8 조회 실패했어");
+//		}
+//		System.out.println("result8 " + result8);
+//	
 	}
 
 }
