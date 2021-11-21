@@ -5,6 +5,10 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
+  <style>
+		@import url('https://fonts.googleapis.com/css?family=Gugi:400');
+		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -41,8 +45,8 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-container-style u-group u-opacity u-opacity-95 u-palette-1-light-3 u-shape-rectangle u-group-1">
           <div class="u-container-layout u-container-layout-1">
-            <h3 class="u-text u-text-default u-text-1">드라이브 코스 추천</h3>
-            <h4 class="u-text u-text-default u-text-2">dbdeep</h4>
+            <h3 class="u-text u-text-default u-text-1" style="font-family: 'Gugi', sans-serif;">드라이브 코스 추천</h3>
+            <h4 class="u-text u-text-default u-text-2" style="font-family: 'Gugi', sans-serif;">dbdeep</h4>
             <div class="u-expanded-width u-list u-list-1">
               <div class="u-repeater u-repeater-1">
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-1" data-image-width="150" data-image-height="99" 
@@ -51,9 +55,9 @@
                     <div class="u-background-effect-image u-expanded u-image u-image-1" data-image-width="150" data-image-height="99" data-href="//드라이브코스추천링크"></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-2">
-                    <h4 class="u-align-center u-text u-text-3">드라이브<br>코스 추천
+                    <h4 class="u-align-center u-text u-text-3" style="font-family: 'Do Hyeon', sans-serif;">드라이브<br>코스 추천
                     </h4>
-                    <p class="u-text u-text-4">지역과 테마,&nbsp; 소요시간 별 드라이브 코스를 찾아보세요!</p>
+                    <p class="u-text u-text-4" style="font-family: 'Do Hyeon', sans-serif;">지역과 테마,&nbsp; 소요시간 별 드라이브 코스를 찾아보세요!</p>
                   </div>
                 </div>
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-2" data-image-width="1280" data-image-height="853" data-href="//베스트드라이브코스">
@@ -61,8 +65,8 @@
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-2" data-image-width="1280" data-image-height="853" data-href="//베스트드라이브코스"></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-3">
-                    <h4 class="u-align-center u-text u-text-5">베스트 드라이브 코스 순위</h4>
-                    <p class="u-text u-text-6">가장 인기 많은 드라이브 코스를 한눈에</p>
+                    <h4 class="u-align-center u-text u-text-5" style="font-family: 'Do Hyeon', sans-serif;">베스트 드라이브 코스 순위</h4>
+                    <p class="u-text u-text-6" style="font-family: 'Do Hyeon', sans-serif;">가장 인기 많은 드라이브 코스를 한눈에</p>
                   </div>
                 </div>
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="//드라이브코스입력링크">
@@ -70,9 +74,9 @@
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" data-href="//드라이브코스입력링크"></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-4">
-                    <h4 class="u-align-center u-text u-text-7">드라이브 코스<br>입력
+                    <h4 class="u-align-center u-text u-text-7" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스<br>입력
                     </h4>
-                    <p class="u-text u-text-8">나만의 드라이브 코스를 공유하고 직접 입력해볼 수 있는 기회!</p>
+                    <p class="u-text u-text-8" style="font-family: 'Do Hyeon', sans-serif;">나만의 드라이브 코스를 공유하고 직접 입력해볼 수 있는 기회!</p>
                   </div>
                 </div>
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크">
@@ -80,8 +84,8 @@
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크"></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-5">
-                    <h4 class="u-align-center u-text u-text-9">드라이브 플레이리스트 추천</h4>
-                    <p class="u-text u-text-10">드라이브 코스에 맞는 플레이리스트를 지금 당장 들어보세요</p>
+                    <h4 class="u-align-center u-text u-text-9" style="font-family: 'Do Hyeon', sans-serif;">드라이브 플레이리스트 추천</h4>
+                    <p class="u-text u-text-10" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스에 맞는 플레이리스트를 지금 당장 들어보세요</p>
                   </div>
                 </div>
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-5" data-image-width="1280" data-image-height="853" data-href="//핫플링크">
@@ -89,9 +93,9 @@
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-5" data-image-width="1280" data-image-height="853" data-href="//핫플링크"></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-6">
-                    <h4 class="u-align-center u-text u-text-11">드라이브 코스 주변 핫플&nbsp;<br>알아보기
+                    <h4 class="u-align-center u-text u-text-11" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스 주변 핫플&nbsp;<br>알아보기
                     </h4>
-                    <p class="u-text u-text-12">드라이브 코스 주변의 맛집과 카페를 같이!</p>
+                    <p class="u-text u-text-12" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스 주변의 맛집과 카페를 같이!</p>
                   </div>
                 </div>
               </div>
@@ -103,7 +107,7 @@
     
     
     <footer class="u-align-center u-clearfix u-footer u-palette-1-light-3 u-footer" id="sec-9f7d"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">dpdeep</p>
+        <p class="u-small-text u-text u-text-variant u-text-1" style="font-family: 'Gugi', sans-serif;">dpdeep</p>
       </div></footer>
   </body>
 </html>
