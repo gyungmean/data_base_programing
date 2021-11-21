@@ -17,6 +17,6 @@ public class ViewCourseController implements Controller {
 		course = manager.courseInfo(courseId);		// 코스 정보 검색			
 		
 		request.setAttribute("course", course);	// 코스 정보 저장				
-		return "/course/list.jsp";				// 코스 보기 화면으로 이동
+		return "/course/course_detail.jsp";				// 코스 보기 화면으로 이동
     }
 }

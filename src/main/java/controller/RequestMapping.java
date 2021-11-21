@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
-import controller.comm.*;
+import controller.course.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -36,7 +36,15 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
+        //코스매칭
+        //ListCourseController 전체출력
+        mappings.put("/course", new ListCourseController());
+        //매칭결과 출력
+        mappings.put("/course/course_matching", new MatchCourseController());
         
+        //코스상세보기
+        mappings.put("/course/course_detail", new ViewCourseController());
+
         
         logger.info("Initialized Request Mapping!");
     }

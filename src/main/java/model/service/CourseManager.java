@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Course;
-import model.Theme;
 
 public class CourseManager {
 	/*
@@ -89,5 +88,13 @@ public class CourseManager {
 		return course;
 		
 
+	}
+	
+	public String regionName(int region_id) throws SQLException, CourseNotFoundException {	
+		return courseDAO.regionName(region_id);
+	}
+	
+	public List<String> themeName(List<String> themeIdList) throws SQLException, CourseNotFoundException {
+			return courseDAO.themeName(themeIdList);
 	}
 }

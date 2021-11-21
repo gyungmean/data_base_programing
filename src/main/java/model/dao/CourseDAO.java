@@ -428,5 +428,53 @@ public class CourseDAO {
 	      }
 	      return false;
 	   }
+	   
+	   //region_id 왔을때 region이름 반환
+	   public String regionName(int region_id) throws SQLException {
+		      String sql = "SELECT region_name FROM REGION WHERE region_id=?";      
+		      jdbcUtil.setSqlAndParameters(sql, new Object[] {region_id});   // JDBCUtil에 query문과 매개 변수 설정
+
+		      try {
+		         ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+		         if (rs.next()) {
+		            String region_name = rs.getString("region_name");
+		            return region_name;
+		         }
+		      } catch (Exception ex) {
+		         ex.printStackTrace();
+		      } finally {
+		         jdbcUtil.close();      // resource 반환
+		      }
+		      return null;
+		 }
+	   
+	   public List<String> themeName(List<String> themeIdList) throws SQLException {
+		      String sql = "SELECT theme_name FROM THEME WHERE theme_id IN (";  
+		    	        
+		    	        for(String t : themeIdList) {
+		    	        	if(t == themeIdList.get(themeIdList.size() - 1)) {
+		    	        		sql += (t + ") ");
+		    	        		break;
+		    	        	}
+		    	        	sql += (t + ", ");
+		    	        }
+		    	        
+		      jdbcUtil.setSqlAndParameters(sql, null);   // JDBCUtil에 query문과 매개 변수 설정
+
+		      try {
+		         ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+		         List<String> themeName = new ArrayList<String>();
+		         while (rs.next()) {
+		            String theme_name = rs.getString("theme_name");
+		            themeName.add(theme_name);
+		         }
+		         return themeName;
+		      } catch (Exception ex) {
+		         ex.printStackTrace();
+		      } finally {
+		         jdbcUtil.close();      // resource 반환
+		      }
+		      return null;
+		 }
 }
 

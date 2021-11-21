@@ -35,6 +35,7 @@ public class UserManager {
 	
 	public int create(User user) throws SQLException, ExistingUserException {
 		if (userDAO.existingUser(user.getEmail()) == true) {
+			System.out.println("이메일 중복");
 			throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");
 		}
 		return userDAO.create(user);
@@ -86,6 +87,10 @@ public class UserManager {
 		return true;
 	}
 
+	public boolean existingUser(String email) throws SQLException, UserNotFoundException {
+		return userDAO.existingUser(email);
+	}	
+	
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}

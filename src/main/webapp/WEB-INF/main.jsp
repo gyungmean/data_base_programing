@@ -45,7 +45,8 @@
             <h4 class="u-text u-text-default u-text-2">dbdeep</h4>
             <div class="u-expanded-width u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-1" data-image-width="150" data-image-height="99" data-href="//드라이브코스추천링크">
+                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-1" data-image-width="150" data-image-height="99" 
+                data-href="<c:url value='/course' />">
                   <div class="u-background-effect u-expanded">
                     <div class="u-background-effect-image u-expanded u-image u-image-1" data-image-width="150" data-image-height="99" data-href="//드라이브코스추천링크"></div>
                   </div>
