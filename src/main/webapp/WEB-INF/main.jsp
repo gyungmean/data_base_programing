@@ -60,7 +60,8 @@
                     <p class="u-text u-text-4" style="font-family: 'Do Hyeon', sans-serif;">지역과 테마,&nbsp; 소요시간 별 드라이브 코스를 찾아보세요!</p>
                   </div>
                 </div>
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-2" data-image-width="1280" data-image-height="853" data-href="//베스트드라이브코스">
+                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-2" data-image-width="1280" data-image-height="853" 
+                data-href="<c:url value='/course/course_rank' />">
                   <div class="u-background-effect u-expanded">
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-2" data-image-width="1280" data-image-height="853" data-href="//베스트드라이브코스"></div>
                   </div>

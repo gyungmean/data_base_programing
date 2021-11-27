@@ -97,4 +97,9 @@ public class CourseManager {
 	public List<String> themeName(List<String> themeIdList) throws SQLException, CourseNotFoundException {
 			return courseDAO.themeName(themeIdList);
 	}
+	
+	//경민 수정부분
+	public int countCourse() throws SQLException{
+		return courseDAO.countCourse();
+	}
 }

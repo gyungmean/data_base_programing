@@ -476,5 +476,25 @@ public class CourseDAO {
 		      }
 		      return null;
 		 }
+
+	   //경민 추가 부분
+	   public int countCourse() throws SQLException {
+		   String sql = "SELECT COUNT(course_id) AS num FROM COURSE ";
+		   jdbcUtil.setSqlAndParameters(sql, null);
+		   
+		   int courseCount = -1;
+		   try {
+			   ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+				if (rs.next()) {						
+					courseCount = rs.getInt("num");
+					return courseCount;
+				}
+		   }catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+		   return courseCount;
+	   }
 }
 

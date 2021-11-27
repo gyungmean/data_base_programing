@@ -4,9 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Course;
-import model.User;
 import model.dao.Course_likeDAO;
-import model.dao.UserDAO;
 
 public class Course_likeManager {
 	private static Course_likeManager course_likeMan = new Course_likeManager();
