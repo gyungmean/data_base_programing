@@ -21,6 +21,10 @@ public class Region {
 	public String getRegion_name() {
 		return region_name;
 	}
+	
+	public String getRegion_name(int region_id) {
+		return region_name;
+	}
 
 	public void setRegion_name(String region_name) {
 		this.region_name = region_name;

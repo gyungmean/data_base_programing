@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Course;
+import model.Region;
 import model.Theme;
 
 public class CourseDAO {
@@ -253,45 +254,168 @@ public class CourseDAO {
 		return null;
 	}
 	
-//	//선호 키워드 따라서 정렬하는 함수(중간때는 보류)
-//	public List<Course> keywordCourseList(int currentPage, int countPerPage, int user_id) throws SQLException {
-//		String sql_1 = "SELECT cousre_id, course_name, like_count, time, region_id "
-//					+ "FROM COURSE "
-//					+ "";
-//		jdbcUtil.setSqlAndParameters(sql_1, null,					// JDBCUtil에 query문 설정
-//				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
-//				ResultSet.CONCUR_READ_ONLY);
-//		String sql_2 = "SELECT cousre_id, course_name, like_count, time, region_id, theme_id "
-//				+ "FROM Course "
-//				+ "where NOT (region_id=? AND theme_id=?)";
-//		
-//		List<Course> courseList = new ArrayList<Course>();
-//		try {
-//			ResultSet rs = jdbcUtil.executeQuery();				// query 실행			
-////			int start = ((currentPage-1) * countPerPage) + 1;	// 출력을 시작할 행 번호 계산
-//			do {
-//				Course course = new Course(	
-//				rs.getInt("course_id"),
-//				rs.getString("course_name"),
-//				null,
-//				null,
-//				null,
-//				rs.getString("time"),
-//				0,
-//				rs.getInt("like_count"),
-//				rs.getInt("region_id"),
-//				rs.getInt("theme_id"));
-//				courseList.add(course);					
-//			} while ((rs.next()));		
-//			return courseList;							
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			jdbcUtil.close();		// resource 반환
-//		}
-//		return null;
-//	}
-//	
+	//선호 키워드 따라서 정렬하는 함수(중간때는 보류)
+	public List<Course> keywordCourseList(List<String> regionString, List<String> themeString) throws SQLException {
+		String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+        		+ "FROM Course c, THEME_COURSE tc, THEME t "
+	            + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
+	            + "AND t.theme_id IN (";
+		
+		for(String t : themeString) {
+        	if(t == themeString.get(themeString.size() - 1)) {
+        		sql += (t + ") ");
+        		break;
+        	}
+        	sql += (t + ", ");
+        }
+		
+		sql += "AND c.region_id IN (";
+		
+		for(String t : regionString) {
+        	if(t == regionString.get(regionString.size() - 1)) {
+        		sql += (t + ") ");
+        		break;
+        	}
+        	sql += (t + ", ");
+        }
+		
+		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
+				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
+				ResultSet.CONCUR_READ_ONLY);
+		
+		
+		try {
+		       ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+		       List<Course> courseList = new ArrayList<Course>();   // course들의 리스트 생성
+		       Course c = null;
+		       List<Theme> themeList = new ArrayList<Theme>();
+		       int preT = 0;
+		       while (rs.next()) {
+//		    	   if (preT == Integer.parseInt(rs.getString("course_id"))) {
+////		    		   Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+////		 	          themeList.add(t);
+//		    	   }
+//		    	   else {
+//		    		   if(themeList.size() != 0) {
+//		        		c.setThemeList(themeList);
+//		        		courseList.add(c);
+//		        		themeList = new ArrayList<Theme>();
+//		        		}
+		        		c = new Course(         // Course 객체를 생성하여 현재 행의 정보를 저장
+				        		rs.getInt("course_id"),
+								rs.getString("course_name"),
+								null,
+								null,
+								null,
+								rs.getString("time"),
+								0,
+								rs.getInt("region_id"),
+								themeList,
+								0);
+//		        		preT = rs.getInt("course_id");
+		       		   	
+		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+		  	          themeList.add(t);
+		  	          
+		  	          
+		  	          c.setThemeList(themeList);
+		  	          courseList.add(c);
+//		    	   }
+		    	       
+		       }
+
+//	    	   if(themeList.size() != 0) {
+//	        		c.setThemeList(themeList);
+//	        		courseList.add(c);
+//	        		}
+	    	   return courseList;  
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+	
+	//선호 키워드 따라서 정렬하는 함수(중간때는 보류)
+		public List<Course> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException {
+			String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+	        		+ "FROM Course c, THEME_COURSE tc, THEME t "
+		            + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
+		            + "AND t.theme_id NOT IN (";
+			
+			for(String t : themeString) {
+	        	if(t == themeString.get(themeString.size() - 1)) {
+	        		sql += (t + ") ");
+	        		break;
+	        	}
+	        	sql += (t + ", ");
+	        }
+			
+			sql += "AND c.region_id NOT IN (";
+			
+			for(String t : regionString) {
+	        	if(t == regionString.get(regionString.size() - 1)) {
+	        		sql += (t + ") ORDER BY c.course_id ");
+	        		break;
+	        	}
+	        	sql += (t + ", ");
+	        }
+			
+			jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
+					ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 가능
+					ResultSet.CONCUR_READ_ONLY);
+			
+			
+			try {
+			       ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+			       List<Course> courseList = new ArrayList<Course>();   // course들의 리스트 생성
+			       Course c = null;
+			       List<Theme> themeList = new ArrayList<Theme>();
+			       int preT = 0;
+			       while (rs.next()) {
+			    	   if (preT == Integer.parseInt(rs.getString("course_id"))) {
+			    		   Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+			 	          themeList.add(t);
+			    	   }
+			    	   else {
+			    		   if(themeList.size() != 0) {
+			        		c.setThemeList(themeList);
+			        		courseList.add(c);
+			        		themeList = new ArrayList<Theme>();
+			        		}
+			        		c = new Course(         // Course 객체를 생성하여 현재 행의 정보를 저장
+					        		rs.getInt("course_id"),
+									rs.getString("course_name"),
+									null,
+									null,
+									null,
+									rs.getString("time"),
+									0,
+									rs.getInt("region_id"),
+									themeList,
+									0);
+			        		preT = rs.getInt("course_id");
+			       		   	
+			  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+			  	          themeList.add(t);
+			    	   }
+			    	       
+			       }
+
+		    	   if(themeList.size() != 0) {
+		        		c.setThemeList(themeList);
+		        		courseList.add(c);
+		        		}
+		    	   return courseList;  
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+		}
+	
 	
 	//조건 맞춰서 매칭 후 리스트
 	public List<Course> matchCourse(String time, int region_id, List<String> themeString) throws SQLException {
@@ -495,6 +619,32 @@ public class CourseDAO {
 				jdbcUtil.close();		// resource 반환
 			}
 		   return courseCount;
+	   }
+	   
+	   public List<Theme> findThemeByCourseId(int course_id) throws SQLException {
+		   String sql = "SELECT tc.theme_id, tc.course_id, t.theme_name "
+		   		+ "FROM THEME_COURSE tc, THEME t "
+		   		+ "WHERE tc.theme_id = t.theme_id "
+		   		+ "AND course_id=? ";
+		   
+		   jdbcUtil.setSqlAndParameters(sql, new Object[] {course_id});
+		   
+		   List<Theme> themeList = new ArrayList<Theme>();
+		   try {
+		         ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+		         while (rs.next()) {
+		            int theme_id = rs.getInt("theme_id");
+		            String theme_name = rs.getString("theme_name");
+		            Theme theme = new Theme(theme_id, theme_name);
+		            themeList.add(theme);
+		         }
+		         return themeList;
+		      } catch (Exception ex) {
+		         ex.printStackTrace();
+		      } finally {
+		         jdbcUtil.close();      // resource 반환
+		      }
+		      return null;
 	   }
 }
 

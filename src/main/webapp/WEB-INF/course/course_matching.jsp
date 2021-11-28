@@ -16,7 +16,6 @@
 		<noscript><link rel="stylesheet" href="<c:url value='/drive_course_matching/assets/css/noscript.css' />" /></noscript>
 	</head>
 	<body class="is-preload">
-	
 		<!-- Scripts -->
 			<script src="<c:url value='/drive_course_matching/assets/js/jquery.min.js'/>"></script>
 			<script src="<c:url value='/drive_course_matching/assets/js/browser.min.js'/>"></script>
@@ -29,6 +28,18 @@
 					form.method="POST";
 					form.submit();
 				}
+				course_detail = function(targetUri) {
+					form.action = targetUri;
+					form.method="POST";
+					form.submit();
+				}
+				likeCreate = function(targetUri) {
+					alert('likeCreate 눌림');
+		 			<!--document.createElement('like').setAttribute('user_id', 1);-->
+		 			form.action = targetUri;
+		 			form.method="POST";
+		 			form.submit();
+		 		}
 			</script>
 			
 		<!-- Wrapper -->
@@ -244,27 +255,33 @@
 								</details>
 							</header>
 							<br>
+							<form>
 							<section class="tiles">
 							 <c:forEach var="course" items="${courseList}">  	
 								<article class="style6">
 									<span class="image">
 										<img src="<c:url value='/drive_course_matching/images/pic06.jpg'/>" alt="" />
 									</span>
-									<a href="<c:url value='/drive_course_matching/generic.html'/>">
+									<a href="<c:url value='/course/course_detail'>
+									<c:param name='course_id' value='${course.course_id}'/>
+			 		 				</c:url>">
 										<h2>${course.course_name}</h2>
 										<div class="content">
 											<p>
 											<c:forEach var="theme" items="${course.themeList}">
 												#${theme.theme_name}&nbsp;
 											</c:forEach>
+											
 											</p>
-											<button class="likeBtn" type="button" onclick="">♡</button>
+											
 										</div>
 									</a>
+									
 								</article>
 							</c:forEach>
-								
+							<button class="likeBtn" type="button" onclick="likeCreate('<c:url value='/course/course_like'/>')">♡</button>	
 							</section>
+							</form>
 						</div>
 					</div>
 

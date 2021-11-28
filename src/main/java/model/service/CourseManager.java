@@ -102,4 +102,12 @@ public class CourseManager {
 	public int countCourse() throws SQLException{
 		return courseDAO.countCourse();
 	}
+	
+	public List<Course> keywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
+		return courseDAO.keywordCourseList(regionString, themeString);
+	}
+	
+	public List<Course> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
+		return courseDAO.notKeywordCourseList(regionString, themeString);
+	}
 }

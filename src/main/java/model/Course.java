@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
@@ -14,6 +13,8 @@ public class Course {
    private int region_id;
    private List<Theme> themeList;
    private int user_id;
+   
+   public Course() { }
    
    public Course(int course_id, String course_name, String departure, String stopover, String destination, String time,
 		   int parking, int region_id, List<Theme> themeList, int user_id) {

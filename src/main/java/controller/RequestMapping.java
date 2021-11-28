@@ -45,6 +45,8 @@ public class RequestMapping {
         //코스상세보기
         mappings.put("/course/course_detail", new ViewCourseController());
         
+        mappings.put("/course/course_like", new LikeCourseController());
+        
         //코스 랭킹 & 검색
         mappings.put("/course/course_rank", new RankCourseController());
         

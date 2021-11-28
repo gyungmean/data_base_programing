@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="model.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	Course course = (Course)request.getAttribute("course");
+	User user = (User)request.getAttribute("user");
+	
+	int like_count = (int)(request.getAttribute("like_count"));
+	
+	String departure = course.getDeparture();
+	String stopover = course.getStopover();
+	String destination = course.getDestination();
+	if(departure == null)
+		departure = "X";
+	if(stopover == null)
+		stopover = "X";
+	if(destination == null)
+		destination = "X";
+	
+	String region_name = (String)(request.getAttribute("region_name"));
+	
+	int getParking = course.getParking();
+	String parking = "";
+	if(getParking == 1)
+		parking = "있음";
+	else
+		parking = "없음";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +44,7 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -27,7 +55,7 @@
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+          font-size: 7rem;
         }
       }
     </style>
@@ -39,14 +67,23 @@
     <link href="drive_course_detail/blog.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<script>
+ 		likeCreate = function() {
+ 			<!--document.createElement('like').setAttribute('user_id', 1);-->
+ 			like.method="POST";
+ 			like.submit();
+ 		}
+ 	</script>
+<div class="container" align = "center">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">뒤로 가기</a>
+        <a class="link-secondary" href="<c:url value='/course' />" style="font-family: 'Do Hyeon', sans-serif;">뒤로 가기</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">북악 스카이웨이</a>
+        <a class="blog-header-logo text-dark" style="font-family: 'Do Hyeon', sans-serif;">
+        <font size="15">
+        <%=course.getCourse_name()%></font></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
@@ -56,54 +93,58 @@
   </header>
 </div>
 
-<main class="container">
+<main class="container" align = "center">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">코스 사진</h1>
+      <h1 class="display-4 fst-italic" style="font-family: 'Do Hyeon', sans-serif;">코스 사진</h1>
     </div>
   </div>
-
-  <div class="row g-5">
-    <div class="col-md-8">
-      <article class="blog-post">
+<form name="like" id="like" action="<c:url value='/course/course_detail' />">
+  <div class="row g-5" align = "center">
+    <div class="col-md-8" align = "center">
+      <article class="blog-post" align = "center">
       <table class="table" align = "center">
-          <tbody>
+          <tbody align = "center"> 
             <tr>
-              <td>북악 스카이웨이</td>
-              <td>#야경</td>
-       		  <td>30분~1시간</td>
-       		  <td>♥1999</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;"><%=course.getCourse_name()%></td>
+              <td style="font-family: 'Do Hyeon', sans-serif;">
+              	<c:forEach var="theme1" items="${course.themeList}">
+					  #${theme1.theme_name} 
+				</c:forEach> 
+              </td>
+       		  <td style="font-family: 'Do Hyeon', sans-serif;"><%=course.getTime()%></td>
+       		  <td style="font-family: 'Do Hyeon', sans-serif;">♥<%=like_count%></td>
             </tr>
           </tbody>
         </table>
         <table class="table" align = "center">
           <tbody>
             <tr>
-              <td>경로</td>
-              <td>북악 스카이웨이</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;">경로</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;">
+              	출발지:<%=departure%>     경유지:<%=stopover%>     도착지:<%=destination%>
+              </td>
             </tr>
             <tr>
-              <td>지역</td>
-              <td>서울 종로구 평창동</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;">지역</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;"><%=region_name%></td>
             </tr>
             <tr>
-              <td>코멘터리</td>
-              <td>야경을 보며 데이트하기 좋은 곳</td>
-            </tr>
-            <tr>
-              <td>주차할 만한 곳</td>
-              <td>북악 팔각정 주차장</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;">주차할 만한 곳</td>
+              <td style="font-family: 'Do Hyeon', sans-serif;"><%=parking%></td>
             </tr>
           </tbody>
         </table>
       </article>
+      <input type="hidden" name="course_id" value="<%=course.getCourse_id()%>"> 
       <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-primary" href="#">좋아요</a>
-        <a class="btn btn-outline-primary" href="#">주변 갈만한 곳</a>
-        <a class="btn btn-outline-primary" href="#">드라이브 음악 추천</a>
+        <a class="btn btn-outline-primary" onClick="likeCreate()" style="font-family: 'Do Hyeon', sans-serif;">좋아요</a>
+        <a class="btn btn-outline-primary" href="#" style="font-family: 'Do Hyeon', sans-serif;">주변 갈만한 곳</a>
+        <a class="btn btn-outline-primary" href="#" style="font-family: 'Do Hyeon', sans-serif;">드라이브 음악 추천</a>
       </nav>
     </div>
   </div>
+  </form>
   
 </main>
 </body>

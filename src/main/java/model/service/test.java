@@ -20,19 +20,19 @@ public class test {
 		
 		
 	
-		List<Course> list = new ArrayList<Course>();
-		List<Integer> themeList = new ArrayList<Integer>();
-
-		try {
-			
-			list = clmanager.user_likeCourseList(1);
-
-		} catch(Exception e) {
-			System.out.println("실패");
-		}
-		for(Course l : list) {
-			System.out.println(l.toString());
-		}
+//		List<Course> list = new ArrayList<Course>();
+//		List<Integer> themeList = new ArrayList<Integer>();
+//
+//		try {
+//			
+//			list = clmanager.user_likeCourseList(1);
+//
+//		} catch(Exception e) {
+//			System.out.println("실패");
+//		}
+//		for(Course l : list) {
+//			System.out.println(l.toString());
+//		}
 		
 //		List<Course> list = new ArrayList<Course>();
 //		try {
@@ -83,30 +83,30 @@ public class test {
 //		}
 //		System.out.println("result3 " + result3);
 		
-//		List<Region> regionList1 = new ArrayList<Region>();
-//		List<Region> regionList2 = new ArrayList<Region>();
-//		try {
-//			regionList1 = manager.regionList(2);
-//		} catch(Exception e) {
-//			System.out.println("2의 regionList 가져오기 실패");
-//		}
+		List<Region> regionList1 = new ArrayList<Region>();
+		List<Region> regionList2 = new ArrayList<Region>();
+		try {
+			regionList1 = umanager.regionList(1);
+		} catch(Exception e) {
+			System.out.println("2의 regionList 가져오기 실패");
+		}
 //		
 //		try {
-//			regionList2 = manager.regionList(4);
+//			regionList2 = umanager.regionList(4);
 //		} catch(Exception e) {
 //			System.out.println("4의 regionList 가져오기 실패");
 //		}
 //	
-//		System.out.println("2의 regionList : " + regionList1.toString());
+		System.out.println("1의 regionList : " + regionList1.toString());
 //		System.out.println("4의 regionList : " + regionList2.toString());
 //		
-//		List<Theme> themeList1 = new ArrayList<Theme>();
-//		List<Theme> themeList2 = new ArrayList<Theme>();
-//		try {
-//			themeList1 = manager.themeList(2);
-//		} catch(Exception e) {
-//			System.out.println("2의 themeList 가져오기 실패");
-//		}
+		List<Theme> themeList1 = new ArrayList<Theme>();
+		List<Theme> themeList2 = new ArrayList<Theme>();
+		try {
+			themeList1 = umanager.themeList(1);
+		} catch(Exception e) {
+			System.out.println("2의 themeList 가져오기 실패");
+		}
 //		
 //		try {
 //			themeList2 = manager.themeList(5);
@@ -114,7 +114,7 @@ public class test {
 //			System.out.println("5의 themeList 가져오기 실패");
 //		}
 //	
-//		System.out.println("2의 themeList : " + themeList1.toString());
+		System.out.println("1의 themeList : " + themeList1.toString());
 //		System.out.println("5의 themeList : " + themeList2.toString());
 //		
 //		int result5 = 0;
