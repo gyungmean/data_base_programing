@@ -22,17 +22,27 @@ public class ListCourseController implements Controller {
     	UserManager manager2 = UserManager.getInstance();
     	
     	HttpSession session = request.getSession();
-    	int id = UserSessionUtils.getLoginUserId(session); //수정해야됨
+    	List<Course> courseList = new ArrayList<Course>();
+    	int id = -1;
+    	try {
+    		id = UserSessionUtils.getLoginUserId(session);
+    	} catch (Exception e) {
+    		courseList = manager.allCourseList();
+    		request.setAttribute("courseList", courseList);	
+    		request.setAttribute("controller", "List");
+    		return "/course/course_matching.jsp"; //로그인 하지 않았을 때
+    	}
+
+    	System.out.println("user id : " + id);
     	
     	List<Region>regionList = manager2.regionList(id);
     	List<Theme>themeList = manager2.themeList(id);
     	
-    	List<Course> courseList;
+    	List<Course> courseList1;
     	List<Course> courseList2;
-    	
-    	List<Course> resultList = new ArrayList<Course>();
-    	if(regionList.size() == 0 || themeList.size() == 0) {
-    		resultList = manager.allCourseList();
+
+    	if(regionList.size() == 0 || themeList.size() == 0) { //로그인은 했으나 선호키워드를 선택하지 않은 경우
+    		courseList = manager.allCourseList(); 
     	}
     	else {
     		List<String> regionString = new ArrayList<String>();
@@ -44,17 +54,17 @@ public class ListCourseController implements Controller {
     			themeString.add(Integer.toString(t.getTheme_id()));
     		}
     		
-    		courseList = manager.keywordCourseList(regionString, themeString);
+    		courseList1 = manager.keywordCourseList(regionString, themeString);
     		courseList2 = manager.notKeywordCourseList(regionString, themeString);
     		
-    		resultList.addAll(courseList);
-    		resultList.addAll(courseList2);
+    		courseList.addAll(courseList1);
+    		courseList.addAll(courseList2);
     	}
 		
 		
 		
 		// courseList 객체를 request에 저장하여 코스 리스트 화면으로 이동(forwarding)
-		request.setAttribute("courseList", resultList);	
+		request.setAttribute("courseList", courseList);	
 		request.setAttribute("controller", "List");		
 		return "/course/course_matching.jsp"; 
     }

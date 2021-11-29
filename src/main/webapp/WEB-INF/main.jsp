@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	int user_id = (int)(request.getAttribute("userId"));
+	System.out.println("jsp userId : " + user_id);
+%>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
@@ -33,12 +37,27 @@
     <meta property="og:title" content="mainPage">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-5a17"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body">
+  <header class="u-clearfix u-header u-header" id="sec-5a17"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-text u-text-1">
-          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-dark-1 u-btn-1"  
-         	 href="<c:url value='/user/login/form' />">
-			<span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 128 128" style="width: 1em; height: 1em;"><path d="m64 17.43a46.754 46.754 0 0 0 -27.4 84.638l.043.03.008.006a46.775 46.775 0 0 0 54.692 0l.046-.032a46.754 46.754 0 0 0 -27.389-84.642zm-24.62 82.305v-3.025a22.766 22.766 0 0 1 22.77-22.78h1.735.115s.076 0 .115 0h1.735a22.766 22.766 0 0 1 22.77 22.78v3.025a43.233 43.233 0 0 1 -49.24 0zm24.735-29.3h-.23a15.518 15.518 0 0 1 -15.454-15.5c0-.4.017-.806.051-1.214a15.571 15.571 0 0 1 31.037.012c.033.4.05.8.05 1.2a15.518 15.518 0 0 1 -15.454 15.5zm28.005 26.586v-.311a26.261 26.261 0 0 0 -18.82-25.199 18.966 18.966 0 0 0 9.766-16.58c0-.5-.021-1-.062-1.484a19.07 19.07 0 0 0 -38.013-.012c-.042.491-.063.994-.063 1.5a18.959 18.959 0 0 0 9.772 16.576 26.26 26.26 0 0 0 -18.82 25.199v.311a43.25 43.25 0 1 1 56.24 0z"></path></svg><img></span>&nbsp;​&nbsp;login / join us
-          </a>
+        <c:set var="user_id" value="<%=user_id %>"></c:set>
+        <c:choose>
+	        <c:when test="${user_id eq 0}">
+		        <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-dark-1 u-btn-1"
+			         href="<c:url value='/user/login/form' />"> 
+					  <span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 128 128" style="width: 1em; height: 1em;"><path d="m64 17.43a46.754 46.754 0 0 0 -27.4 84.638l.043.03.008.006a46.775 46.775 0 0 0 54.692 0l.046-.032a46.754 46.754 0 0 0 -27.389-84.642zm-24.62 82.305v-3.025a22.766 22.766 0 0 1 22.77-22.78h1.735.115s.076 0 .115 0h1.735a22.766 22.766 0 0 1 22.77 22.78v3.025a43.233 43.233 0 0 1 -49.24 0zm24.735-29.3h-.23a15.518 15.518 0 0 1 -15.454-15.5c0-.4.017-.806.051-1.214a15.571 15.571 0 0 1 31.037.012c.033.4.05.8.05 1.2a15.518 15.518 0 0 1 -15.454 15.5zm28.005 26.586v-.311a26.261 26.261 0 0 0 -18.82-25.199 18.966 18.966 0 0 0 9.766-16.58c0-.5-.021-1-.062-1.484a19.07 19.07 0 0 0 -38.013-.012c-.042.491-.063.994-.063 1.5a18.959 18.959 0 0 0 9.772 16.576 26.26 26.26 0 0 0 -18.82 25.199v.311a43.25 43.25 0 1 1 56.24 0z"></path></svg><img></span>
+					  &nbsp;​&nbsp;login/join us
+			     </a>
+		     </c:when>
+		 	<c:otherwise>
+		 		${user_id}님 환영합니다.<br>
+	     		<a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-dark-1 u-btn-1"
+			         href="<c:url value='/user/logout' />"> 
+					  <span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 128 128" style="width: 1em; height: 1em;"><path d="m64 17.43a46.754 46.754 0 0 0 -27.4 84.638l.043.03.008.006a46.775 46.775 0 0 0 54.692 0l.046-.032a46.754 46.754 0 0 0 -27.389-84.642zm-24.62 82.305v-3.025a22.766 22.766 0 0 1 22.77-22.78h1.735.115s.076 0 .115 0h1.735a22.766 22.766 0 0 1 22.77 22.78v3.025a43.233 43.233 0 0 1 -49.24 0zm24.735-29.3h-.23a15.518 15.518 0 0 1 -15.454-15.5c0-.4.017-.806.051-1.214a15.571 15.571 0 0 1 31.037.012c.033.4.05.8.05 1.2a15.518 15.518 0 0 1 -15.454 15.5zm28.005 26.586v-.311a26.261 26.261 0 0 0 -18.82-25.199 18.966 18.966 0 0 0 9.766-16.58c0-.5-.021-1-.062-1.484a19.07 19.07 0 0 0 -38.013-.012c-.042.491-.063.994-.063 1.5a18.959 18.959 0 0 0 9.772 16.576 26.26 26.26 0 0 0 -18.82 25.199v.311a43.25 43.25 0 1 1 56.24 0z"></path></svg><img></span>
+					  &nbsp;​&nbsp;logout
+			     </a>
+			</c:otherwise>  
+		</c:choose>	 
         </p>
       </div></header>
     <section class="u-clearfix u-white u-section-1" id="sec-f441">
@@ -70,9 +89,9 @@
                     <p class="u-text u-text-6" style="font-family: 'Do Hyeon', sans-serif;">가장 인기 많은 드라이브 코스를 한눈에</p>
                   </div>
                 </div>
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="//드라이브코스입력링크">
+                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="<c:url value='/course/form' />">
                   <div class="u-background-effect u-expanded">
-                    <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" data-href="//드라이브코스입력링크"></div>
+                    <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" ></div>
                   </div>
                   <div class="u-container-layout u-similar-container u-container-layout-4">
                     <h4 class="u-align-center u-text u-text-7" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스<br>입력

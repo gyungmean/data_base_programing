@@ -18,34 +18,34 @@ public class CourseDAO {
 	 /**
      * 코스 관리 테이블에 새로운 코스 생성.
      */
- public int create(Course course) throws SQLException {
-    String sql = "INSERT INTO COURSE VALUES (courseId_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";      
-    Object[] param = new Object[] {course.getCourse_name(),
-                            (course.getDeparture()!= null) ? course.getDeparture() : null, 
-                            (course.getStopover()!= null) ? course.getStopover() : null,
-                            (course.getDestination()!= null) ? course.getDestination() : null,
-                            course.getTime(), ((course.getParking() != 0) ? course.getParking() : null), 
-                            course.getRegion_id()};            
-    
-    jdbcUtil.setSqlAndParameters(sql, param);   // JDBCUtil 에 insert문과 매개 변수 설정
-     String key[] = {"course_id"};
-    try {            
-       int result = jdbcUtil.executeUpdate(key);   // insert 문 실행
-       ResultSet rs = jdbcUtil.getGeneratedKeys();
-       int generatedKey = 0;
-       if (rs.next()) {
-          generatedKey = rs.getInt(1);
-       }
-       return generatedKey;
-    } catch (Exception ex) {
-       jdbcUtil.rollback();
-       ex.printStackTrace();
-    } finally {      
-       jdbcUtil.commit();
-       jdbcUtil.close();   // resource 반환
-    }      
-    return 0;         
- }
+	public int create(Course course) throws SQLException {
+	    String sql = "INSERT INTO COURSE VALUES (courseId_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";      
+	    Object[] param = new Object[] {course.getCourse_name(),
+	                            (course.getDeparture()!= null) ? course.getDeparture() : null, 
+	                            (course.getStopover()!= null) ? course.getStopover() : null,
+	                            (course.getDestination()!= null) ? course.getDestination() : null,
+	                            course.getTime(), ((course.getParking() != 0) ? course.getParking() : null), 
+	                            course.getRegion_id(), course.getUser_id()};            
+	    
+	    jdbcUtil.setSqlAndParameters(sql, param);   // JDBCUtil 에 insert문과 매개 변수 설정
+	     String key[] = {"course_id"};
+	    try {            
+	       int result = jdbcUtil.executeUpdate(key);   // insert 문 실행
+	       ResultSet rs = jdbcUtil.getGeneratedKeys();
+	       int generatedKey = 0;
+	       if (rs.next()) {
+	          generatedKey = rs.getInt(1);
+	       }
+	       return generatedKey;
+	    } catch (Exception ex) {
+	       jdbcUtil.rollback();
+	       ex.printStackTrace();
+	    } finally {      
+	       jdbcUtil.commit();
+	       jdbcUtil.close();   // resource 반환
+	    }      
+	    return 0;         
+	 }
  
  //course theme 저장
  public int theme(int theme_id, int course_id) throws SQLException {

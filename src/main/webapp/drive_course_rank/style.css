@@ -19,7 +19,7 @@ form{
 .text{
 	width:100%;
 	position: relative;
-	display: flex;
+	display: relative;
 }
 
 .searchTerm {
@@ -56,6 +56,13 @@ form{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: visible;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.top20{
+	
 }
 
 /*·©Å· top10*/

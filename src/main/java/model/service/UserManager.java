@@ -94,4 +94,13 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
+
+	public int createRegion(int user_id, int region_id) throws SQLException {
+		return userDAO.createUserR(user_id,  region_id);
+	}
+
+	public int createTheme(int user_id, int theme_id) throws SQLException {
+		return userDAO.createUserR(user_id,  theme_id);
+		
+	}
 }

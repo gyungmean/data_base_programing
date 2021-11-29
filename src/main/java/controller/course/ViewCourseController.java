@@ -27,10 +27,10 @@ public class ViewCourseController implements Controller {
     			manager3.createLike(userId, courseId);
     	        return "redirect:/course";	//redirection 어디로 할지 detail로 하면 다시 코스 아이디를 받아오는 과정에서 오류가 난다 
     	        
-    		} catch (ExistingUserException e) {	
+    		} catch (Exception e) {	
     			request.setAttribute("exception", e);
     			System.out.println("좋아요 누를때 예외 발생");
-    			return "main.jsp";
+    			return "/user/login.jsp";
     		}
     	}
     	else {

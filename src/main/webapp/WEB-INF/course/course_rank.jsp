@@ -31,12 +31,14 @@
    	<div></div>
    	<h1><i class="fa fa-trophy" style="color: #00B4CC;"></i> 베스트 드라이브 코스</h1>
    </div>
-   <div class="top10">
+   <div class="top20">
    	<!-- 랭킹 출력 -->
    	<ol class="rounded-list">
    		<c:forEach var="resultList" items="${resultList}">
    		<li>
-   			<a href="//코스디테일">
+   			<a href="<c:url value='/course/course_detail'>
+							<c:param name='course_id' value='${resultList.key.course_id}'/>
+			 		</c:url>">
    				<span class="course-name">${resultList.key.course_name}</span><br>
    				<i class="fa fa-heart" aria-hidden="true" style="color:#ff0000;"></i> ${resultList.value}
    				<c:forEach var="theme" items="${resultList.key.themeList}">
