@@ -19,59 +19,59 @@
 				<div class="title">선호지역</div>
 				<div class="row">
 	        		<label>
-	        			<input type="checkbox" name="seoul" />
+	        			<input type="checkbox" name="region_id" value="1" />
 	            		<span class="icon-box">서울/경기</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="incheon" />
+	        			<input type="checkbox" name="region_id" value="2"/>
 	            		<span class="icon-box">인천</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="gangwon" />
+	        			<input type="checkbox" name="region_id" value="3"/>
 	            		<span class="icon-box">강원</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="chungbuk" />
+	        			<input type="checkbox" name="region_id" value="4"/>
 	            		<span class="icon-box">충북</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="chungnam" />
+	        			<input type="checkbox" name="region_id" value="5"/>
 	            		<span class="icon-box">충남</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="daejeon" />
+	        			<input type="checkbox" name="region_id" value="6"/>
 	            		<span class="icon-box">대전/세종</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="jeonbuk" />
+	        			<input type="checkbox" name="region_id" value="7"/>
 	            		<span class="icon-box">전북</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="jeonnam" />
+	        			<input type="checkbox" name="region_id" value="8"/>
 	            		<span class="icon-box">전남</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="gwangju" />
+	        			<input type="checkbox" name="region_id" value="9"/>
 	            		<span class="icon-box">광주</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="gyeongbuk" />
+	        			<input type="checkbox" name="region_id" value="10"/>
 	            		<span class="icon-box">경북</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="gyeongnam" />
+	        			<input type="checkbox" name="region_id" value="11"/>
 	            		<span class="icon-box">경남</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="daegu" />
+	        			<input type="checkbox" name="region_id" value="12"/>
 	            		<span class="icon-box">대구</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="busan" />
+	        			<input type="checkbox" name="region_id" value="13"/>
 	            		<span class="icon-box">부산</span>
 	        		</label>
 	        		<label>
-	        			<input type="checkbox" name="jeju" />
+	        			<input type="checkbox" name="region_id" value="14"/>
 	            		<span class="icon-box">제주</span>
 	        		</label>
 	      		</div>
@@ -80,55 +80,55 @@
 			<div class="title">선호테마</div>
 			<div class="row">
         		<label>
-        			<input type="checkbox" name="date" />
+        			<input type="checkbox" name="themeIdList" value="1"/>
             		<span class="icon-box">데이트</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="friend" />
+        			<input type="checkbox" name="themeIdList" value="2"/>
             		<span class="icon-box">친구들</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="sea" />
+        			<input type="checkbox" name="themeIdList" value="3"/>
             		<span class="icon-box">바다</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="city" />
+        			<input type="checkbox" name="themeIdList" value="4"/>
             		<span class="icon-box">도심</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="night" />
+        			<input type="checkbox" name="themeIdList" value="5"/>
             		<span class="icon-box">야경</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="healing" />
+        			<input type="checkbox" name="themeIdList" value="6"/>
             		<span class="icon-box">힐링</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="spring" />
+        			<input type="checkbox" name="themeIdList" value="7"/>
             		<span class="icon-box">봄</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="summer" />
+        			<input type="checkbox" name="themeIdList" value="8"/>
             		<span class="icon-box">여름</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="fall" />
+        			<input type="checkbox" name="themeIdList" value="9"/>
             		<span class="icon-box">가을</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="winter" />
+        			<input type="checkbox" name="themeIdList" value="10"/>
             		<span class="icon-box">겨울</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="lake" />
+        			<input type="checkbox" name="themeIdList" value="11"/>
             		<span class="icon-box">호수</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="forest" />
+        			<input type="checkbox" name="themeIdList" value="12"/>
             		<span class="icon-box">숲</span>
         		</label>
         		<label>
-        			<input type="checkbox" name="mountain" />
+        			<input type="checkbox" name="themeIdList" value="13"/>
             		<span class="icon-box">산</span>
         		</label>
       		</div>

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Course {
    private int course_id;           
    private String course_name;
@@ -7,13 +9,15 @@ public class Course {
    private String stopover;           
    private String destination;
    private String time;                 
-   private int parking;             
-   private int like_count;  
-   private int region_id;           
-   private int theme_id;
+   private int parking;              
+   private int region_id;
+   private List<Theme> themeList;
+   private int user_id;
+   
+   public Course() { }
    
    public Course(int course_id, String course_name, String departure, String stopover, String destination, String time,
-         int parking, int like_count, int region_id, int theme_id) {
+		   int parking, int region_id, List<Theme> themeList, int user_id) {
       super();
       this.course_id = course_id;
       this.course_name = course_name;
@@ -22,9 +26,9 @@ public class Course {
       this.destination = destination;
       this.time = time;
       this.parking = parking;
-      this.like_count = like_count;
       this.region_id = region_id;
-      this.theme_id = theme_id;
+      this.themeList = themeList;
+      this.user_id = user_id;
    }
 
    public int getCourse_id() {
@@ -83,14 +87,6 @@ public class Course {
       this.parking = parking;
    }
 
-   public int getLike_count() {
-      return like_count;
-   }
-
-   public void setLike_count(int like_count) {
-      this.like_count = like_count;
-   }
-
    public int getRegion_id() {
       return region_id;
    }
@@ -99,12 +95,31 @@ public class Course {
       this.region_id = region_id;
    }
 
-   public int getTheme_id() {
-      return theme_id;
+   public List<Theme> getThemeList() {
+      return themeList;
    }
 
-   public void setTheme_id(int theme_id) {
-      this.theme_id = theme_id;
-   }     
- 
+   public void setThemeList(List<Theme> themeList) {
+      this.themeList = themeList;
+   }
+
+	public int getUser_id() {
+		return user_id;
+	}
+	
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	public String toString() {
+		return course_id
+				+ " "   + course_name
+				+ " "   +  departure
+				+ " "   +  stopover
+				+ " "   +  destination
+				+ " "   +  time
+				+ " "   +  parking
+				+ " "   +  region_id
+				+ " "   +  themeList
+				+ " "   +  user_id + "\n";
+	}
 }

@@ -3,9 +3,9 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Community;
+import model.Region;
+import model.Theme;
 import model.User;
-import model.dao.CommunityDAO;
 import model.dao.UserDAO;
 
 /**
@@ -18,14 +18,12 @@ import model.dao.UserDAO;
 public class UserManager {
 	private static UserManager userMan = new UserManager();
 	private UserDAO userDAO;
-	private CommunityDAO commDAO;
-	private UserAnalysis userAanlysis;
+//	private CourseDAO courseDAO;
 
 	private UserManager() {
 		try {
 			userDAO = new UserDAO();
-			commDAO = new CommunityDAO();
-			userAanlysis = new UserAnalysis(userDAO);
+//			courseDAO = new CourseDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -36,96 +34,63 @@ public class UserManager {
 	}
 	
 	public int create(User user) throws SQLException, ExistingUserException {
-		if (userDAO.existingUser(user.getUserId()) == true) {
-			throw new ExistingUserException(user.getUserId() + "는 존재하는 아이디입니다.");
+		if (userDAO.existingUser(user.getEmail()) == true) {
+			System.out.println("이메일 중복");
+			throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");
 		}
 		return userDAO.create(user);
 	}
-
+	
 	public int update(User user) throws SQLException, UserNotFoundException {
-		int oldCommId = findUser(user.getUserId()).getCommId();
-		if (user.getCommId() != oldCommId) { 	// 소속 커뮤티니가 변경됨
-			Community comm = commDAO.findCommunity(oldCommId);  // 기존 소속 커뮤니티
-			if (comm != null && user.getUserId().equals(comm.getChairId())) {
-				// 사용자가 기존 소속 커뮤니티의 회장인 경우 -> 그 커뮤니티의 회장을 null로 변경 및 저장
-				comm.setChairId(null);
-				commDAO.updateChair(comm);
-			}
-		}
 		return userDAO.update(user);
 	}	
-
-	public int remove(String userId) throws SQLException, UserNotFoundException {
-		int commId = findUser(userId).getCommId();
-		Community comm = commDAO.findCommunity(commId);  // 소속 커뮤니티
-		if (comm != null && userId.equals(comm.getChairId())) {
-			// 사용자가 소속 커뮤니티의 회장인 경우 -> 그 커뮤니티의 회장을 null로 변경 및 저장
-			comm.setChairId(null);
-			commDAO.updateChair(comm);
-		}
-		return userDAO.remove(userId);
+	
+	public int remove(int user_id) throws SQLException, UserNotFoundException {
+		return userDAO.remove(user_id);
 	}
-
-	public User findUser(String userId)
+	
+	public User findUser(int user_id)
+			throws SQLException, UserNotFoundException {
+			User user = userDAO.findUser(user_id);
+			
+			if (user == null) {
+				throw new UserNotFoundException(user_id + "는 존재하지 않는 아이디 입니다.");
+			}		
+			return user;
+		}
+	
+	public User findUserId(String email)
 		throws SQLException, UserNotFoundException {
-		User user = userDAO.findUser(userId);
+		User user = userDAO.findUserId(email);
 		
 		if (user == null) {
-			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
+			throw new UserNotFoundException(email + "는 존재하지 않는 이메일 입니다.");
 		}		
 		return user;
 	}
 
-	public List<User> findUserList() throws SQLException {
-			return userDAO.findUserList();
+	public List<Region> regionList(int user_id) throws SQLException {
+			return userDAO.user_regionList(user_id);
 	}
 	
-	public List<User> findUserList(int currentPage, int countPerPage)
-		throws SQLException {
-		return userDAO.findUserList(currentPage, countPerPage);
+	public List<Theme> themeList(int user_id) throws SQLException {
+		return userDAO.user_themeList(user_id);
 	}
 
-	public boolean login(String userId, String password)
+	public boolean login(String email, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
-		User user = findUser(userId);
-
+		User user = findUserId(email);
+	
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
 		}
 		return true;
 	}
 
-	public List<User> makeFriends(String userId) throws Exception {
-		return userAanlysis.recommendFriends(userId);
-	}
+	public boolean existingUser(String email) throws SQLException, UserNotFoundException {
+		return userDAO.existingUser(email);
+	}	
 	
-	public Community createCommunity(Community comm) throws SQLException {
-		return commDAO.create(comm);		
-	}
-
-	public int updateCommunity(Community comm) throws SQLException {
-		return commDAO.update(comm);				
-	}
-	
-	public Community findCommunity(int commId) throws SQLException {
-		Community comm = commDAO.findCommunity(commId); 
-		
-		List<User> memberList = userDAO.findUsersInCommunity(commId);
-		comm.setMemberList(memberList);
-		
-		int numOfMembers = userDAO.getNumberOfUsersInCommunity(commId);
-		comm.setNumOfMembers(numOfMembers);
-		return comm;
-	}
-	
-	public List<Community> findCommunityList() throws SQLException {
-		return commDAO.findCommunityList();
-	}
-	
-	public List<User> findCommunityMembers(int commId) throws SQLException {
-		return userDAO.findUsersInCommunity(commId);
-	}
-
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}

@@ -4,6 +4,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
+import model.Region;
+import model.Theme;
 import model.User;
 import model.service.UserManager;
 
@@ -24,13 +26,17 @@ public class ListUserController implements Controller {
 			currentPage = Integer.parseInt(currentPageStr);
 		}		
     	*/
+    	int user_id = Integer.parseInt(request.getParameter("user_id"));
     	
 		UserManager manager = UserManager.getInstance();
-		List<User> userList = manager.findUserList();
+		
+		List<Region> regionList = manager.regionList(user_id);
+		List<Theme> themeList = manager.themeList(user_id);
 		// List<User> userList = manager.findUserList(currentPage, countPerPage);
 
 		// userList 객체와 현재 로그인한 사용자 ID를 request에 저장하여 전달
-		request.setAttribute("userList", userList);				
+		request.setAttribute("regionList", regionList);			
+		request.setAttribute("themeList", themeList);		
 		request.setAttribute("curUserId", 
 				UserSessionUtils.getLoginUserId(request.getSession()));		
 

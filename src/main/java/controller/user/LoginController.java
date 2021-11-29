@@ -5,31 +5,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import model.User;
 import model.service.UserManager;
 
 public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	String userId = request.getParameter("userId");
+
+    	String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		try {
 			// 모델에 로그인 처리를 위임
 			UserManager manager = UserManager.getInstance();
-			manager.login(userId, password);
-	
+			manager.login(email, password);
+			
+			int user_id = manager.getUserDAO().findUserId(email).getUser_id(); 
+			
 			// 세션에 사용자 이이디 저장
+//			course에 userid 사용하는 부분에서 session에서 getAttribute로 userid 받아오는거 추가하기 (courseController)
 			HttpSession session = request.getSession();
-            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+            session.setAttribute(UserSessionUtils.USER_SESSION_KEY, user_id);
             
-            return "redirect:/user/list";			
+            return "redirect:/main";			
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력
 			 */
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);
-            return "/user/loginForm.jsp";			
+            return "/user/login.jsp";			
 		}	
     }
 }
