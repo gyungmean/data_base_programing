@@ -273,7 +273,7 @@ public class CourseDAO {
 		
 		for(String t : regionString) {
         	if(t == regionString.get(regionString.size() - 1)) {
-        		sql += (t + ") ");
+        		sql += (t + ") ORDER BY c.course_id ");
         		break;
         	}
         	sql += (t + ", ");
@@ -291,16 +291,16 @@ public class CourseDAO {
 		       List<Theme> themeList = new ArrayList<Theme>();
 		       int preT = 0;
 		       while (rs.next()) {
-//		    	   if (preT == Integer.parseInt(rs.getString("course_id"))) {
-////		    		   Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
-////		 	          themeList.add(t);
-//		    	   }
-//		    	   else {
-//		    		   if(themeList.size() != 0) {
-//		        		c.setThemeList(themeList);
-//		        		courseList.add(c);
-//		        		themeList = new ArrayList<Theme>();
-//		        		}
+		    	   if (preT == Integer.parseInt(rs.getString("course_id"))) {
+		    		   Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+		 	          themeList.add(t);
+		    	   }
+		    	   else {
+		    		   if(themeList.size() != 0) {
+		        		c.setThemeList(themeList);
+		        		courseList.add(c);
+		        		themeList = new ArrayList<Theme>();
+		        		}
 		        		c = new Course(         // Course 객체를 생성하여 현재 행의 정보를 저장
 				        		rs.getInt("course_id"),
 								rs.getString("course_name"),
@@ -312,23 +312,19 @@ public class CourseDAO {
 								rs.getInt("region_id"),
 								themeList,
 								0);
-//		        		preT = rs.getInt("course_id");
+		        		preT = rs.getInt("course_id");
 		       		   	
 		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
 		  	          themeList.add(t);
-		  	          
-		  	          
-		  	          c.setThemeList(themeList);
-		  	          courseList.add(c);
-//		    	   }
+		    	   }
 		    	       
 		       }
 
-//	    	   if(themeList.size() != 0) {
-//	        		c.setThemeList(themeList);
-//	        		courseList.add(c);
-//	        		}
-	    	   return courseList;  
+	    	   if(themeList.size() != 0) {
+	        		c.setThemeList(themeList);
+	        		courseList.add(c);
+	        		}
+	    	   return courseList; 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

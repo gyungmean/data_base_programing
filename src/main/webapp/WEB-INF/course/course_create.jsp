@@ -24,7 +24,59 @@
 			<script src="<c:url value='/drive_course_matching/assets/js/main.js'/>"></script>
 			<script>
 				course_create = function() {
-					form.method="POST";
+					var course_name = document.form.course_name.value;
+					
+					var timeChk = false;
+				       var arr_time = document.getElementsByName("time");
+				       for(var i=0; i<arr_time.length;i++){
+				           if(arr_time[i].checked == true) {
+				               timeChk = true;
+				               break;
+				           }
+				       }
+				       
+				       var regionChk = false;
+				       var arr_region = document.getElementsByName("region_id");
+				       for(var i=0; i<arr_region.length;i++){
+				           if(arr_region[i].checked == true) {
+				               regionChk = true;
+				               break;
+				           }
+				       }
+				       
+				       var themeChk = false;
+				       var arr_theme = document.getElementsByName("themeIdList");
+				       for(var i=0; i<arr_theme.length;i++){
+				           if(arr_theme[i].checked == true) {
+				        	   themeChk = true;
+				               break;
+				           }
+				       }
+					if(!course_name){
+						alert("코스 이름을 입력해주세요.")
+						return false;
+					}
+					if(!timeChk){
+						alert("시간을 선택해주세요.")
+						return false;
+					}
+					if(!regionChk){
+						alert("지역을 선택해주세요.")
+						return false;
+					}
+					if(!themeChk){
+						alert("테마를 선택해주세요.")
+						return false;
+					}
+					else{
+						form.method="GET";
+						form.submit();
+						return true;
+					}
+				}
+				
+				nameCkeck = function() {
+					form.method="GET";
 					form.submit();
 				}
 			</script>
@@ -49,10 +101,15 @@
 
 							<!-- Form -->
 								<section>
-									<form name="form" action = "<c:url value='/course/course_create'/>" method="post" >
+									<form name="form" action = "<c:url value='/course/course_create'/>" method="get" >
 										<div class="row gtr-uniform">
-											<div class="col-12">
+											<div class="col-6 col-12-xsmall">
 												<input type="text" name="course_name" id="course_name" placeholder="코스 이름" required/>
+											</div>
+											<div class="col-6 col-12-xsmall">
+											<c:if test="${registerFailed}">
+								     			 <font color="red"><c:out value="${exception.getMessage()}" /></font>
+								    		</c:if>
 											</div><br>
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="departure" id="departure" placeholder="출발지" />
@@ -63,8 +120,11 @@
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="destination" id="destination" placeholder="도착지" />
 											</div><br>
-											<div class="col-6 col-12-xsmall">
-												<input type="text" name="parking" id="parking" placeholder="주차 장소" />
+											<div class="col-6 col-12-xsmall"> 주차 장소
+												<label>
+								        			<input type="checkbox" name="parking" placeholder="주차 장소" />
+								            		<span class="icon-box">있음</span>
+								        		</label>
 											</div><br>
 											<div class="col-12">시간(1개만 선택)
 												<label>
@@ -111,7 +171,7 @@
 								        			<input type="checkbox" name="time" value="60분"/>
 								            		<span class="icon-box">60분</span>
 								        		</label>
-						
+											
 											<div class="col-12"> 지역(1개만 선택)
 												<label>
 								        			<input type="checkbox" name="region_id" value="1" required />
@@ -228,12 +288,14 @@
 								
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="button" onClick="course_create()" value="Create" class="primary" /></li>
+													<li><input type="submit" onClick="return course_create()" value="Create" class="primary" /></li>
 													<li><input type="reset" value="Reset" /></li>
 												</ul>
 											</div>
 										</div>
+										
 									</form>
+									 
 								</section>
 
 

@@ -11,24 +11,25 @@
   </head>
 <body>
 <div class="wrap">
-<div>
-<a href="<c:url value='/main'/>" class="logo">
-	<i class="fa fa-home" aria-hidden="true" style="color:#00B4CC;font-size:20px;"></i>
-	<br><br>
-</a>
-</div>
-<form name="search" action="<c:url value='/course/search_result' />" method="GET" >
-   <div class="search">
-   
-      <input type="text" class="searchTerm" name="search_word" placeholder="코스 이름을 입력하세요.">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
+<div class="search-wrap">
+	<a href="<c:url value='/main'/>" class="logo">
+		<i class="fa fa-home" aria-hidden="true" style="color:#00B4CC;font-size:20px;"></i>
+		<br><br>
+	</a>
+	
+	<form name="search" action="<c:url value='/course/search_result' />" method="GET" >
+	   <div class="search">
+	   
+	      <input type="text" class="searchTerm" name="search_word" placeholder="코스 이름을 입력하세요.">
+	      <button type="submit" class="searchButton">
+	        <i class="fa fa-search"></i>
+	     </button>
 
-   </div>
+  </div>
 </form>
+</div>
+<div class="rank-wrap">
    <div class="text">
-   	<div></div>
    	<h1><i class="fa fa-trophy" style="color: #00B4CC;"></i> 베스트 드라이브 코스</h1>
    </div>
    <div class="top20">
@@ -49,8 +50,8 @@
    		</li>  	
 		</c:forEach>                       
     </ol>
-	    
    </div>
+</div>
 </div>
 
 </body>

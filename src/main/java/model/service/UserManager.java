@@ -34,6 +34,11 @@ public class UserManager {
 	}
 	
 	public int create(User user) throws SQLException, ExistingUserException {
+//		System.out.println("userid : " + user.getUser_id() + "usernickname : " + user.getNickname()
+//		+ "userpassword : " + user.getPassword() + "useremail : " + user.getEmail());
+//		if (user.getUser_id() == 0) {
+//			throw new ExistingUserException("정보를 다 입력하지 않았습니다.");
+//		}
 		if (userDAO.existingUser(user.getEmail()) == true) {
 			System.out.println("이메일 중복");
 			throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");

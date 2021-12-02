@@ -20,7 +20,7 @@ public class KeywordUserController {
 //		String user_idS = request.getParameter("user_id");
 //		int user_id = Integer.parseInt(user_idS);
 		
-		String[] theme = request.getParameterValues("theme_id");
+		String[] theme = request.getParameterValues("themeIdList");
 		
 		String[] region = request.getParameterValues("region_id");
 
