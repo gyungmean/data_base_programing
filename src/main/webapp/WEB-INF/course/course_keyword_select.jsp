@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	int user_id = (int)(request.getAttribute("user_id"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 	<title>선호키워드 선택</title>
-	<link rel="stylesheet" href="course_keyword_select/style.css">
+	<link rel="stylesheet" 
+	href="<c:url value = '/course_keyword_select/style.css' />">
 </head>
 <body>
+ <script>
+	userCreate = function() {
+		form.method="POST";		// register form 요청
+		form.submit();
+	}
+	</script>
 	<div class="wrap">
 		<div class="txt"><h2>선호 키워드 선택</h2></div>
+		<form name="form" action="<c:url value='/user/selectKeyword'/>" id="form">
 		<div class="txt">
-			<button>다음에 할게요</button>
-			<button>확인</button>
+			<input type="submit" class = "button" onclick="userCreate()" value = "다음에 할게요">
+			<input type="submit" class = "button" onclick="userCreate()" value = "확인"> 
 		</div>
 		<div class="wrap-keyword">
 			<div class="region-wrap">
@@ -131,9 +143,11 @@
         			<input type="checkbox" name="themeIdList" value="13"/>
             		<span class="icon-box">산</span>
         		</label>
+        		<input type="hidden" name="user_id" value="<%=user_id%>"> 
       		</div>
 		</div>
 		</div>
-	</div>		
+	</form>
+	</div>	
 </body>
 </html>

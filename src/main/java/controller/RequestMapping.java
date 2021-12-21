@@ -36,6 +36,9 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
+        mappings.put("/user/selectKeyword", new KeywordUserController());
+        
+        
         //코스매칭
         //ListCourseController 전체출력
         mappings.put("/course", new ListCourseController());
