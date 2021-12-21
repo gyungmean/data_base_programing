@@ -91,16 +91,33 @@
                     <p class="u-text u-text-6" style="font-family: 'Do Hyeon', sans-serif;">가장 인기 많은 드라이브 코스를 한눈에</p>
                   </div>
                 </div>
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="<c:url value='/course/form' />">
-                  <div class="u-background-effect u-expanded">
-                    <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" ></div>
-                  </div>
-                  <div class="u-container-layout u-similar-container u-container-layout-4">
-                    <h4 class="u-align-center u-text u-text-7" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스<br>입력
-                    </h4>
-                    <p class="u-text u-text-8" style="font-family: 'Do Hyeon', sans-serif;">나만의 드라이브 코스를 공유하고 직접 입력해볼 수 있는 기회!</p>
-                  </div>
-                </div>
+                <c:choose>
+				        <c:when test="${user_id eq 0}">
+					       <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="<c:url value='/user/login/form' />">
+			                  <div class="u-background-effect u-expanded">
+			                    <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" ></div>
+			                  </div>
+			                  <div class="u-container-layout u-similar-container u-container-layout-4">
+			                    <h4 class="u-align-center u-text u-text-7" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스<br>입력
+			                    </h4>
+			                    <p class="u-text u-text-8" style="font-family: 'Do Hyeon', sans-serif;">나만의 드라이브 코스를 공유하고 직접 입력해볼 수 있는 기회!</p>
+			                  </div>
+			                </div>
+					     </c:when>
+					 	<c:otherwise>
+				     		<div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-3" data-image-width="1280" data-image-height="852" data-href="<c:url value='/course/form' />">
+			                  <div class="u-background-effect u-expanded">
+			                    <div class="u-background-effect-image u-expanded u-image u-shading u-image-3" data-image-width="1280" data-image-height="852" ></div>
+			                  </div>
+			                  <div class="u-container-layout u-similar-container u-container-layout-4">
+			                    <h4 class="u-align-center u-text u-text-7" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스<br>입력
+			                    </h4>
+			                    <p class="u-text u-text-8" style="font-family: 'Do Hyeon', sans-serif;">나만의 드라이브 코스를 공유하고 직접 입력해볼 수 있는 기회!</p>
+			                  </div>
+			                </div>
+						</c:otherwise>  
+					</c:choose>	 
+              <!--   
                 <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크">
                   <div class="u-background-effect u-expanded">
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크"></div>
@@ -120,6 +137,7 @@
                     <p class="u-text u-text-12" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스 주변의 맛집과 카페를 같이!</p>
                   </div>
                 </div>
+                --> 
               </div>
             </div>
           </div>

@@ -279,7 +279,6 @@
 									
 								</article>
 							</c:forEach>
-							<button class="likeBtn" type="button" onclick="likeCreate('<c:url value='/course/course_like'/>')">♡</button>	
 							</section>
 							</form>
 						</div>
