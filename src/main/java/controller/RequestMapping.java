@@ -33,32 +33,31 @@ public class RequestMapping {
 //      mappings.put("/user/update/form", new UpdateUserFormController());
 //      mappings.put("/user/update", new UpdateUserController());        
         mappings.put("/user/update", new UpdateUserController());
-        
         mappings.put("/user/delete", new DeleteUserController());
-        
-        mappings.put("/user/selectKeyword", new KeywordUserController());
-        
+        mappings.put("/user/selectKeyword", new KeywordUserController());       
         
         //코스매칭
         //ListCourseController 전체출력
         mappings.put("/course", new ListCourseController());
         //매칭결과 출력
         mappings.put("/course/course_matching", new MatchCourseController());
-        
         //코스상세보기
         mappings.put("/course/course_detail", new ViewCourseController());
-        
+        //코스 좋아요        
         mappings.put("/course/course_like", new LikeCourseController());
-        
         //코스 랭킹 & 검색
-        mappings.put("/course/course_rank", new RankCourseController());
-        
+        mappings.put("/course/course_rank", new RankCourseController()); 
         mappings.put("/course/search_result", new FindCourseController());
-
         //코스생성하기
-        mappings.put("/course/course_create", new CreateCourseController());
-        
+        mappings.put("/course/course_create", new CreateCourseController()); 
         mappings.put("/course/form", new ForwardController("/course/course_create.jsp"));
+        
+        //게시물 리스트 보여주기
+        mappings.put("/comments", new ListCourseController());
+        //게시물 작성하기
+        mappings.put("/comments/write", new ListCourseController());
+        //게시물 자세히 보여주기
+        mappings.put("/comments/view", new ListCourseController());
         
         logger.info("Initialized Request Mapping!");
     }
