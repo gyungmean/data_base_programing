@@ -46,7 +46,6 @@ public class RankCourseController implements Controller{
 		
 		//정렬된 tmp에서 20개만 가져오기
 		LinkedHashMap<Course, Integer> resultList = new LinkedHashMap<Course, Integer>();
-		int idx = 0;
 		int count = courseCount < 20 ? courseCount : 20;
 
 		for(int i = 0; i < count; i++) {
@@ -55,7 +54,6 @@ public class RankCourseController implements Controller{
 					resultList.put(c, tmp[i][1]);
 				}
 			}
-//			resultList.put(courseList.get(tmp[i][0] - 4), tmp[i][1]);
 		}
 		
 		request.setAttribute("resultList", resultList);

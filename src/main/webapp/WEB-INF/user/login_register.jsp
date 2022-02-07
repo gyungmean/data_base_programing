@@ -25,6 +25,18 @@
  		}
  		
  		userCreate = function() {
+ 			if(register.front_email.value=="") {
+ 				alert("email 확인하세요");
+ 				return false;
+ 			}
+ 			if(register.nickname.value=="") {  //직접입력 선택시
+   				alert("nickname 확인하세요");
+   				return false;
+  			}
+   			if(register.password.value=="") {  //직접입력 선택시
+   				alert("password 확인하세요");
+   				return false;
+  			}
  			register.method="POST";
  			register.submit();
  		}
@@ -33,7 +45,7 @@
 		<div class="form-wrap">
 			<div class="title">Register</div>
                 <form name="register" id="register" action="<c:url value='/user/register' />" class="input-group">
-					<input type="text" class="input-email" name="front_email" placeholder="Your Email" required>
+					<input type="text" class="input-email" name="front_email" placeholder="Your Email" id="email" required>
 					@ <input name="e_domain" class="input-email" type="text" required>
 					<select name="domain" onchange="domainCheck();">
 						<option value = "0" selected="selected">직접입력</option>
@@ -43,11 +55,11 @@
     					<option value ="nate.com">nate.com</option>
     					<option value ="hotmail.com">hotmail.com</option>
 					</select>
-					<button class="check-email" onClick="userCreate()" >중복확인</button>
-					<input type="text" class="input-field" name="nickname" placeholder="Your nickname" required>
-                    <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+					<!--  <input type="submit" class="check-email" onClick="userCreate()" value ="중복확인">  -->
+					<input type="text" class="input-field" name="nickname" id="nickname" placeholder="Your nickname" required>
+                    <input type="password" class="input-field" name="password" id="password" placeholder="Enter Password" required>
 					<br><br>
-                    <input type = "button" class="submit" onClick="userCreate()" value = "JOIN">
+                    <input type="submit" class="submit" onClick="userCreate()"  value = "JOIN">
                 </form>
                 <c:if test="${registerFailed}">
 	     			 <font color="red"><c:out value="${exception.getMessage()}" /></font>

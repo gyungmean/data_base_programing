@@ -19,7 +19,7 @@ form{
 .text{
 	width:100%;
 	position: relative;
-	display: flex;
+	display: relative;
 }
 
 .searchTerm {
@@ -51,11 +51,36 @@ form{
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
+  width: 100%;
+   position: relative;
+   margin-top: 5%;
+   margin-bottom: 100px;
+}
+
+.wrap1{
   width: 45%;
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 100%;
   transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.search-wrap{
+  width: 45%;
+  margin: 0 auto;
+  display: relative;
+ 
+}
+
+.rank-wrap{
+  width: 45%;
+  margin: 0 auto;
+  display: relative;
+}
+
+.top20{
+	width: 100%;
 }
 
 /*·©Å· top10*/

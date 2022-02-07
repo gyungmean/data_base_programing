@@ -34,6 +34,11 @@ public class UserManager {
 	}
 	
 	public int create(User user) throws SQLException, ExistingUserException {
+//		System.out.println("userid : " + user.getUser_id() + "usernickname : " + user.getNickname()
+//		+ "userpassword : " + user.getPassword() + "useremail : " + user.getEmail());
+//		if (user.getUser_id() == 0) {
+//			throw new ExistingUserException("정보를 다 입력하지 않았습니다.");
+//		}
 		if (userDAO.existingUser(user.getEmail()) == true) {
 			System.out.println("이메일 중복");
 			throw new ExistingUserException(user.getEmail() + "는 존재하는 이메일입니다.");
@@ -93,5 +98,14 @@ public class UserManager {
 	
 	public UserDAO getUserDAO() {
 		return this.userDAO;
+	}
+
+	public int createRegion(int user_id, int region_id) throws SQLException {
+		return userDAO.createUserR(user_id,  region_id);
+	}
+
+	public int createTheme(int user_id, int theme_id) throws SQLException {
+		return userDAO.createUserT(user_id,  theme_id);
+		
 	}
 }

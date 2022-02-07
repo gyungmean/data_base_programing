@@ -83,7 +83,7 @@
                       </div>
                       <div class="u-form-group u-form-password">
                         <label for="password-5b0a" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="Enter your Password" id="password-5b0a" name="password" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        <input type="password" placeholder="Enter your Password" id="password-5b0a" name="password" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
                       </div>
                       <div class="u-align-center u-form-group u-form-submit">
                         <input type = "button" value = "login" class="u-active-palette-1-light-1 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1"

@@ -13,7 +13,7 @@ public class LogoutController implements Controller {
 		HttpSession session = request.getSession();
 		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
 		session.invalidate();		
-        
-        return "main.jsp";
+        System.out.println("logout 컨트롤러에 도착하고 세션 초기화");
+        return "redirect:/";
     }
 }

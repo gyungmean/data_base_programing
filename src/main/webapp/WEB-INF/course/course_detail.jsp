@@ -94,11 +94,7 @@
 </div>
 
 <main class="container" align = "center">
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic" style="font-family: 'Do Hyeon', sans-serif;">코스 사진</h1>
-    </div>
-  </div>
+
 <form name="like" id="like" action="<c:url value='/course/course_detail' />">
   <div class="row g-5" align = "center">
     <div class="col-md-8" align = "center">

@@ -42,10 +42,20 @@ public class CourseManager {
 		if (courseDAO.existingCourse(course.getCourse_name()) == true) {
 			throw new ExistingCourseException(course.getCourse_name() + "는 존재하는 이름입니다.");
 		}
+		int course_id = courseDAO.create(course);
+		
 		for(int id: theme_id) {
-			courseDAO.theme(id,course.getCourse_id());
+			courseDAO.theme(id, course_id);
 		}
-		return courseDAO.create(course);
+		return course_id;
+	}
+	
+	public boolean exist(String course_name) throws SQLException, ExistingCourseException {
+		if (courseDAO.existingCourse(course_name) == true) {
+			throw new ExistingCourseException(course_name + "는 존재하는 이름입니다.");
+			
+		}
+		return true;
 	}
 	
 	public int remove(int course_id) throws SQLException, CourseNotFoundException {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,8 +51,13 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/main";	// 성공 시 사용자 리스트 화면으로 redirect
-	        
+			
+			User user1 = manager.findUserId(email);
+			int user_id = user1.getUser_id();
+			System.out.println("user_id : " + user_id);
+			request.setAttribute("user_id", user_id);
+			
+	        return "/course/course_keyword_select.jsp";		//연결만 해본 상태 컨트롤러 수정 후 컨트롤러로 연결해야 함 그리고 css 적용이 안된다  
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);

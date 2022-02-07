@@ -9,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>course_matching</title>
+		<title>course_create</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="<c:url value='/drive_course_matching/assets/css/main.css' />" />
@@ -23,25 +23,63 @@
 			<script src="<c:url value='/drive_course_matching/assets/js/util.js'/>"></script>
 			<script src="<c:url value='/drive_course_matching/assets/js/main.js'/>"></script>
 			<script>
-				course_matching = function(targetUri) {
-					form.action = targetUri;
-					form.method="POST";
+				course_create = function() {
+					var course_name = document.form.course_name.value;
+					
+					var timeChk = false;
+				       var arr_time = document.getElementsByName("time");
+				       for(var i=0; i<arr_time.length;i++){
+				           if(arr_time[i].checked == true) {
+				               timeChk = true;
+				               break;
+				           }
+				       }
+				       
+				       var regionChk = false;
+				       var arr_region = document.getElementsByName("region_id");
+				       for(var i=0; i<arr_region.length;i++){
+				           if(arr_region[i].checked == true) {
+				               regionChk = true;
+				               break;
+				           }
+				       }
+				       
+				       var themeChk = false;
+				       var arr_theme = document.getElementsByName("themeIdList");
+				       for(var i=0; i<arr_theme.length;i++){
+				           if(arr_theme[i].checked == true) {
+				        	   themeChk = true;
+				               break;
+				           }
+				       }
+					if(!course_name){
+						alert("코스 이름을 입력해주세요.")
+						return false;
+					}
+					if(!timeChk){
+						alert("시간을 선택해주세요.")
+						return false;
+					}
+					if(!regionChk){
+						alert("지역을 선택해주세요.")
+						return false;
+					}
+					if(!themeChk){
+						alert("테마를 선택해주세요.")
+						return false;
+					}
+					else{
+						form.method="GET";
+						form.submit();
+						return true;
+					}
+				}
+				
+				nameCkeck = function() {
+					form.method="GET";
 					form.submit();
 				}
-				course_detail = function(targetUri) {
-					form.action = targetUri;
-					form.method="POST";
-					form.submit();
-				}
-				likeCreate = function(targetUri) {
-					alert('likeCreate 눌림');
-		 			<!--document.createElement('like').setAttribute('user_id', 1);-->
-		 			form.action = targetUri;
-		 			form.method="POST";
-		 			form.submit();
-		 		}
 			</script>
-			
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -51,42 +89,46 @@
 
 							<!-- Logo -->
 								<a href="<c:url value='/main'/>" class="logo">
-									<span class="symbol"></span><span class="title">Main</span>
+									<span class="symbol"></span><span class="title">main</span>
 								</a>
-
 						</div>
 					</header>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<header>
-								<h1 style="display:inline">
-								<c:set var="controller" value="${controller}" />
-								<c:choose>
-								    <c:when test="${controller eq 'List'}">
-								        #지역의 #테마 코스 둘러보기 
-								    </c:when>
-								    <c:when test="${controller eq 'Match'}">
-								    	#${region}의&nbsp;
-								        <c:forEach var="theme" items="${themeList}">
-												#${theme}&nbsp;
-										</c:forEach>
-										코스 둘러보기
-								    </c:when>
-								</c:choose>
-								
-								</h1>
-								<details>
-									<summary>키워드 선택</summary>
-									<br>
-									<form name="form" action = "<c:url value='/course/course_matching'/>" method="POST">
-									<div class="wrap-keyword">
-										<div class="time-wrap">
-											<div class="title">시간(1개만 선택)</div>
-											<div class="row">
-								        		<label>
-								        			<input type="checkbox" name="time" value="10분" />
+							<h1>코스 생성하기</h1>
+
+							<!-- Form -->
+								<section>
+									<form name="form" action = "<c:url value='/course/course_create'/>" method="get" >
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="course_name" id="course_name" placeholder="코스 이름" required/>
+											</div>
+											<div class="col-6 col-12-xsmall">
+											<c:if test="${registerFailed}">
+								     			 <font color="red"><c:out value="${exception.getMessage()}" /></font>
+								    		</c:if>
+											</div><br>
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="departure" id="departure" placeholder="출발지" />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="stopover" id="stopover" placeholder="경유지" />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="destination" id="destination" placeholder="도착지" />
+											</div><br>
+											<div class="col-6 col-12-xsmall"> 주차 장소
+												<label>
+								        			<input type="checkbox" name="parking" placeholder="주차 장소" />
+								            		<span class="icon-box">있음</span>
+								        		</label>
+											</div><br>
+											<div class="col-12">시간(1개만 선택)
+												<label>
+								        			<input type="checkbox" name="time" value="10분" required />
 								            		<span class="icon-box">10분</span>
 								        		</label>
 								        		<label>
@@ -129,13 +171,10 @@
 								        			<input type="checkbox" name="time" value="60분"/>
 								            		<span class="icon-box">60분</span>
 								        		</label>
-								      		</div>
-										</div>
-										<div class="region-wrap">
-											<div class="title">선호지역(1개만선택)</div>
-											<div class="row">
-								        		<label>
-								        			<input type="checkbox" name="region_id" value="1" />
+											
+											<div class="col-12"> 지역(1개만 선택)
+												<label>
+								        			<input type="checkbox" name="region_id" value="1" required />
 								            		<span class="icon-box">서울/경기</span>
 								        		</label>
 								        		<label>
@@ -190,13 +229,11 @@
 								        			<input type="checkbox" name="region_id" value="14"/>
 								            		<span class="icon-box">제주</span>
 								        		</label>
-								      		</div>
-										</div>
-										<div class="theme-wrap">
-											<div class="title">선호테마</div>
-											<div class="row">
-								        		<label>
-								        			<input type="checkbox" name="themeIdList" value="1"/>
+											</div>
+				
+												<div class="col-12"> 테마 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<label>
+								        			<input type="checkbox" name="themeIdList" value="1" required/>
 								            		<span class="icon-box">데이트</span>
 								        		</label>
 								        		<label>
@@ -247,44 +284,26 @@
 								        			<input type="checkbox" name="themeIdList" value="13"/>
 								            		<span class="icon-box">산</span>
 								        		</label>
-						      				</div>
+											</div><br>
+								
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" onClick="return course_create()" value="Create" class="primary" /></li>
+													<li><input type="reset" value="Reset" /></li>
+												</ul>
+											</div>
 										</div>
-									</div>
-									<input type="button" onClick="course_matching('<c:url value='/course/course_matching'/>')" value="매칭">
+										
 									</form>
-								</details>
-							</header>
-							<br>
-							<form>
-							<section class="tiles">
-							 <c:forEach var="course" items="${courseList}">  	
-								<article class="style6">
-									<span class="image">
-										<img src="<c:url value='/drive_course_matching/images/pic06.jpg'/>" alt="" />
-									</span>
-									<a href="<c:url value='/course/course_detail'>
-									<c:param name='course_id' value='${course.course_id}'/>
-			 		 				</c:url>">
-										<h2>${course.course_name}</h2>
-										<div class="content">
-											<p>
-											<c:forEach var="theme" items="${course.themeList}">
-												#${theme.theme_name}&nbsp;
-											</c:forEach>
-											
-											</p>
-											
-										</div>
-									</a>
-									
-								</article>
-							</c:forEach>
-							</section>
-							</form>
+									 
+								</section>
+
+
 						</div>
 					</div>
 
+
 			</div>
 
+
 	</body>
-</html>
