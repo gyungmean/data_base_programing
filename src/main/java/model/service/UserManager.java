@@ -106,6 +106,5 @@ public class UserManager {
 
 	public int createTheme(int user_id, int theme_id) throws SQLException {
 		return userDAO.createUserT(user_id,  theme_id);
-		
 	}
 }

@@ -24,7 +24,7 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO USER_INFO VALUES (userId_Seq.nextval, ?, ?, ?)";		
+		String sql = "INSERT INTO USER_INFO VALUES (user_id_Seq.nextval, ?, ?, ?)";		
 		Object[] param = new Object[] {user.getPassword(), 
 						user.getNickname(), user.getEmail()	};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
@@ -215,13 +215,18 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
 	public int createUserR(int user_id, int region_id) throws SQLException {
+		System.out.println("UserDao region 성공");
+		System.out.println("user_id : " + user_id + "\nregion_id : " + region_id);
+		
 		String sql = "INSERT INTO USER_REGION VALUES (?, ?)";		
 		Object[] param = new Object[] {user_id, region_id};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-
+		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
+			System.out.println("UserDao region 성공");
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -232,13 +237,18 @@ public class UserDAO {
 		}		
 		return 0;			
 	}
-	public int createUserT(int user_id, int theme_id ) throws SQLException {
+	
+	public int createUserT(int user_id, int theme_id) throws SQLException {
+		System.out.println("UserDao theme 성공");
+		System.out.println("user_id : " + user_id + "\ntheme_id : " + theme_id);
+		
 		String sql = "INSERT INTO USER_THEME VALUES (?, ?)";		
 		Object[] param = new Object[] {user_id, theme_id};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 					
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
+			System.out.println("UserDao theme 성공");
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();

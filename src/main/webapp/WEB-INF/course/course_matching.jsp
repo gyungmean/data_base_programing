@@ -184,10 +184,14 @@
 								        		</label>
 								        		<label>
 								        			<input type="checkbox" name="region_id" value="13"/>
-								            		<span class="icon-box">부산</span>
+								            		<span class="icon-box">울산</span>
 								        		</label>
 								        		<label>
 								        			<input type="checkbox" name="region_id" value="14"/>
+								            		<span class="icon-box">부산</span>
+								        		</label>
+								        		<label>
+								        			<input type="checkbox" name="region_id" value="15"/>
 								            		<span class="icon-box">제주</span>
 								        		</label>
 								      		</div>

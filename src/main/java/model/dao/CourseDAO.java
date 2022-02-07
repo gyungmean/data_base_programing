@@ -19,7 +19,7 @@ public class CourseDAO {
      * 内胶 包府 抛捞喉俊 货肺款 内胶 积己.
      */
 	public int create(Course course) throws SQLException {
-	    String sql = "INSERT INTO COURSE VALUES (courseId_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";      
+	    String sql = "INSERT INTO COURSE VALUES (course_id_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";      
 	    Object[] param = new Object[] {course.getCourse_name(),
 	                            (course.getDeparture()!= null) ? course.getDeparture() : null, 
 	                            (course.getStopover()!= null) ? course.getStopover() : null,
