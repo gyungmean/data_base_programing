@@ -29,6 +29,25 @@ public class CommentMapperRepository {
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 	}
 	
+	public List<Comment> selectAllComments(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return sqlSession.getMapper(CommentMapper.class).selectAllComments();			
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	//selectCommentsByPrimaryKeyAssociation Ãß°¡
+	public Comment selectCommentsByPrimaryKeyAssociation(long commentNo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return sqlSession.getMapper(CommentMapper.class).selectCommentsByPrimaryKeyAssociation(commentNo);			
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
 	public Comment selectCommentByPrimaryKey(long commentNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {

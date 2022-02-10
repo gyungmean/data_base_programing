@@ -126,7 +126,7 @@
                     <p class="u-text u-text-10" style="font-family: 'Do Hyeon', sans-serif;">드라이브 코스에 맞는 플레이리스트를 지금 당장 들어보세요</p>
                   </div>
                 </div>
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-5" data-image-width="1280" data-image-height="853" data-href="//핫플링크">
+                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-5" data-image-width="1280" data-image-height="853" data-href="<c:url value='/comments' />">
                   <div class="u-background-effect u-expanded">
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-5" data-image-width="1280" data-image-height="853" data-href="//핫플링크"></div>
                   </div>
