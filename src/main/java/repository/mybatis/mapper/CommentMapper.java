@@ -7,6 +7,10 @@ import model.Comment;
 import model.Reply;
 
 public interface CommentMapper {
+	List<Comment>selectAllComments();
+	
+	Comment selectCommentsByPrimaryKeyAssociation(long commentNo);
+	
 	Comment selectCommentByPrimaryKey(long commentNo);
 	
 	List<Comment> selectCommentByCondition(Map<String, Object> condition);

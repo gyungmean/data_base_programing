@@ -19,6 +19,7 @@ public class ResourceFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(ResourceFilter.class);
     private static final List<String> resourcePrefixs = new ArrayList<>();
     static {
+    	resourcePrefixs.add("/comments_list");
     	resourcePrefixs.add("/drive_course_detail");
         resourcePrefixs.add("/course_keyword_select");
         resourcePrefixs.add("/drive_course_rank");

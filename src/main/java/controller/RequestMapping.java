@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.course.*;
+import controller.comments.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -53,7 +54,7 @@ public class RequestMapping {
         mappings.put("/course/form", new ForwardController("/course/course_create.jsp"));
         
         //게시물 리스트 보여주기
-        mappings.put("/comments", new ListCourseController());
+        mappings.put("/comments", new ListCommentsController());
         //게시물 작성하기
         mappings.put("/comments/write", new ListCourseController());
         //게시물 자세히 보여주기

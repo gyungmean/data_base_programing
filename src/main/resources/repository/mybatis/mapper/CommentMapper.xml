@@ -12,6 +12,13 @@
 		course_id AS courseId,
 		reg_date AS regDate
 	</sql>
+	
+	<select id="selectAllComments"
+		resultType="model.Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		ORDER BY comment_no DESC
+	</select>
 
 	<select id="selectCommentByPrimaryKey" parameterType="long" 
 		resultType="model.Comment">
@@ -53,25 +60,24 @@
 	<delete id="deleteAllComments">
 		DELETE FROM COMMENTS
 	</delete>
-	
-	
-	<!-- <resultMap id="associationResultMap" type="Comment">
+
+	<resultMap id="associationResultMap" type="Comment">
 		<id column="comment_no" jdbcType="NUMERIC" property="commentNo" />
 		<result column="user_id" jdbcType="VARCHAR" property="userId" />
 		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
 		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
 		<association property="user" column="user_id" javaType="User">
 			<id property="userId" column="user_id" />
-			<result property="userName" column="user_name" />
-			<result property="phone" column="phone" />
-			<result property="address" column="address" />
+			<result property="nickname" column="nickname" />
+			<result property="password" column="password" />
+			<result property="email" column="email" />
 		</association>
-	</resultMap>  -->
+	</resultMap>
 
 <!--  작성된 comment의 user정보
 	<select id="selectCommentByPrimaryKeyAssociation" parameterType="long" 		
 		resultMap="associationResultMap"> 
-		SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, u.user_name, u.phone, u.address
+		SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, u.nickname
 		FROM COMMENTS c, USERS u			
 		WHERE c.user_id = u.user_id  
 		  AND c.comment_no = #{commentNo} 
@@ -91,8 +97,7 @@
 		WHERE c.user_id = u.user_id  
 		  AND c.comment_no = #{commentNo} 
 	</select>
-	
--->	
+	 -->
 	<!--  <resultMap id="collectionResultMap" type="Comment">
 		<id column="comment_no" jdbcType="BIGINT" property="commentNo" />
 		<result column="user_id" jdbcType="VARCHAR" property="userId" />
