@@ -14,11 +14,8 @@
 </head>
 <body>
 	<%
-		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-		String userID = null;
-		if(session.getAttribute("user_id") != null){
-			userID = (String)session.getAttribute("user_id");
-		}
+		int user_id = (int)(request.getAttribute("userId"));
+		System.out.println("jsp userId : " + user_id);
 	%>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -67,7 +64,16 @@
 				</tbody>
 			</table>
 			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<c:choose>
+				<c:when test="${userId eq 0}">
+					<a href="<c:url value='/user/login/form' />" class="btn btn-primary pull-right">글쓰기</a>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/comments/form'>
+					<c:param name='userId' value='${userId}'/> 
+					</c:url>" class="btn btn-primary pull-right">글쓰기</a>
+				</c:otherwise> 
+			</c:choose>
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->

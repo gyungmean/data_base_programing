@@ -65,8 +65,6 @@ public class CreateCourseController implements Controller {
 					request.getParameter("departure"), request.getParameter("stopover"),
 					request.getParameter("destination"), request.getParameter("time"),
 					parking, region_id, themeList, id);		
-		       
-		    	
 		    		
 					int course_id = manager.create(course, themeIdList);
 					String regionName = manager.regionName(region_id);

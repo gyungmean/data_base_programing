@@ -1,61 +1,63 @@
 <%@page import="java.io.PrintWriter"%>
-<%@page import="bbs.BbsDAO"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="bbs" class="bbs.Bbs" scope="page" />
-<jsp:setProperty name="bbs" property="bbsTitle" />
-<jsp:setProperty name="bbs" property="bbsContent" />
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 화면 최적화 -->
+<meta name="viewport" content="width-device-width", initial-scale="1">
+<!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
+<link rel="stylesheet" href="<c:url value='/comments_list/css/bootstrap.css' />">
 <meta charset="UTF-8">
-<title>JSP 게시판 웹 사이트</title>
+<title>드라이브 코스 주변 맛집 글 작성</title>
 </head>
 <body>
-	<%
-		// 현재 세션 상태를 체크한다
-		String userID = null;
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
-		// 로그인을 한 사람만 글을 쓸 수 있도록 코드를 수정한다
-		if(userID == null){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('로그인을 하세요')");
-			script.println("location.href='login.jsp'");
-			script.println("</script>");
-		}else{
-			// 입력이 안 된 부분이 있는지 체크한다
-			if(bbs.getBbsTitle() == null || bbs.getBbsContent() == null){
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("alert('입력이 안 된 사항이 있습니다')");
-				script.println("history.back()");
-				script.println("</script>");
-			}else{
-				// 정상적으로 입력이 되었다면 글쓰기 로직을 수행한다
-				BbsDAO bbsDAO = new BbsDAO();
-				int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent());
-				// 데이터베이스 오류인 경우
-				if(result == -1){
-					PrintWriter script = response.getWriter();
-					script.println("<script>");
-					script.println("alert('글쓰기에 실패했습니다')");
-					script.println("history.back()");
-					script.println("</script>");
-				// 글쓰기가 정상적으로 실행되면 알림창을 띄우고 게시판 메인으로 이동한다
-				}else {
-					PrintWriter script = response.getWriter();
-					script.println("<script>");
-					script.println("alert('글쓰기 성공')");
-					script.println("location.href='bbs.jsp'");
-					script.println("</script>");
-				}
-			}
-		}
+	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
+		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
+			<!-- 네비게이션 상단 박스 영역 -->
+			<!-- 상단 바 제목 -->
+			<a class="navbar-brand" href="<c:url value='/comments' />">드라이브 코스 주변 맛집</a>
+		</div>
+		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="<c:url value='/main' />">메인</a></li>
+				<li class="active"><a href="<c:url value='/comments' />">게시판</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- 네비게이션 영역 끝 -->
 	
-	%>
+	<!-- 게시판 글쓰기 양식 영역 시작 -->
+	<div class="container">
+		<div class="row">
+			<form method="get" action="<c:url value='/comments/write' />">
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
+						</tr>
+						<tr>
+							<td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 글쓰기 버튼 생성 -->
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+			</form>
+		</div>
+	</div>
+	<!-- 게시판 글쓰기 양식 영역 끝 -->
+	
+	<!-- 부트스트랩 참조 영역 -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>

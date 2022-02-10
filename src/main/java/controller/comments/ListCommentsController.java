@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.user.RegisterUserController;
+import controller.user.UserSessionUtils;
 import model.Comment;
+import model.User;
 import model.service.UserManager;
 import repository.mybatis.CommentMapperRepository;
 
@@ -24,9 +26,16 @@ public class ListCommentsController implements Controller{
 		
 		List<Comment> commentsList = commentDao.selectAllComments();
 		log.debug("selectAllComments success");
-//		for(Comment c : commentsList) {
-//			c = commentDao.selectCommentsByPrimaryKeyAssociation(c.getCommentNo());
-//		}
+
+		try {
+			HttpSession session = request.getSession();
+	    	int userId = UserSessionUtils.getLoginUserId(session);
+	    	log.debug("userId: " + userId);
+	    	
+			request.setAttribute("userId", userId);
+		} catch(Exception e) {
+			request.setAttribute("userId", 0);
+		}
 		
 		UserManager manager = UserManager.getInstance();
 		for(Comment c : commentsList) {

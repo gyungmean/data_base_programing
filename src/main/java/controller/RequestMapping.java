@@ -56,7 +56,8 @@ public class RequestMapping {
         //게시물 리스트 보여주기
         mappings.put("/comments", new ListCommentsController());
         //게시물 작성하기
-        mappings.put("/comments/write", new ListCourseController());
+        mappings.put("/comments/form", new ForwardController("/comments/comments_write.jsp"));
+        mappings.put("/comments/write", new WriteCommentsController());
         //게시물 자세히 보여주기
         mappings.put("/comments/view", new ListCourseController());
         
