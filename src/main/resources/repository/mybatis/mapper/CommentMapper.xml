@@ -42,6 +42,9 @@
 	</select>
 
 	<insert id="insertComment" parameterType="model.Comment">
+		<selectKey keyProperty="commentNo" resultType="long" order="BEFORE">
+			SELECT comment_no_Seq.nextval AS comment_no FROM DUAL
+		</selectKey>
 		INSERT INTO COMMENTS (comment_no, title, user_id, comment_content, course_id, reg_date)
 		VALUES (#{commentNo}, #{title}, #{userId}, #{commentContent}, #{courseId}, #{regDate})
 	</insert>
@@ -121,6 +124,9 @@
 	</select> -->
 	
 	<insert id="insertReply" parameterType="model.Reply">
+		<selectKey keyProperty="replyId" resultType="long" order="BEFORE">
+			SELECT reply_id_Seq.nextval AS reply_id FROM DUAL
+		</selectKey>
 		INSERT INTO REPLY (reply_id, comment_no, user_id, reply_content, reg_date)
 		VALUES (#{replyId}, #{commentNo}, #{userId}, #{replyContent}, #{regDate})
 	</insert>
