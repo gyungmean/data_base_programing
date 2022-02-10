@@ -11,8 +11,8 @@ import model.User;
 import repository.mybatis.CommentMapperRepository;
 
 public class CommentMapperRepositoryTest {
-	static CommentManager manager = CommentManager.getInstance();
-
+	static CommentManager commentMan = CommentManager.getInstance();
+//	static ReplyManager replyMan = ReplyManager.getInstance();
 	public static void main(String[] args) throws SQLException, CourseNotFoundException, UserNotFoundException {
 		System.out.println("CommentMapperRepository starts...");
 		
@@ -24,25 +24,31 @@ public class CommentMapperRepositoryTest {
 		User user1 = userMan.findUser(1);
 				
 		try {
-			manager.insertComment(20200004L, 1, "제목1", "내용1", 1);
-			manager.insertComment(20200005L, 2, "제목2", "내용2", 2);
-			System.out.println();
+//			commentMan.insertComment(20200004L, 1, "제목1", "내용1", 1);
+//			commentMan.insertComment(20200005L, 2, "제목2", "내용2", 2);
+//			System.out.println();
 			
-//			manager.selectCommentByPrimaryKey(20200004L);
-//			manager.selectCommentByPrimaryKey(20200005L);
-//			manager.selectCommentByCondition(1);
+//			commentMan.selectCommentByPrimaryKey(20200004L);
+//			commentMan.selectCommentByPrimaryKey(20200005L);
+//			commentMan.selectCommentByCondition(2);
 //			System.out.println();
-//	
-//			manager.updateComment(20200004L, "comment #0");
-//			manager.selectCommentByCondition(1);
+	
+//			commentMan.updateComment(20200004L, "내용1바꿈");
+//			commentMan.selectCommentByPrimaryKey(20200004L);
 //			System.out.println();
-//			
-//			manager.deleteComment(20200004L);
-//			manager.selectCommentByCondition(1);
-//			System.out.println();			
+			
+//			commentMan.deleteComment(20200004L);
+//			commentMan.selectCommentByPrimaryKey(20200004L);
+//			System.out.println();		
+			
+//			commentMan.insertReply(1, 20200004L, 3, "20200004L번 게시물에 3번이 댓글달기");
+//			commentMan.insertReply(2, 20200004L, 1, "20200004L번 게시물에 1번이 댓글달기");
+//			commentMan.insertReply(3, 20200005L, 3, "20200005L번 게시물에 3번이 댓글달기");
+
+//			commentMan.deleteAllReplies();
 		} finally {
 //			manager.deleteAllComments();
-//			manager.selectCommentByCondition(1);
+//			manager.selectCommentByPrimaryKey(20200004L);
 		}
 	}
 	

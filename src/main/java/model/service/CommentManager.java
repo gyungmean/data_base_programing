@@ -30,12 +30,14 @@ public class CommentManager {
 		return commentMan;
 	}
 	
+//	commentNo·Î comment°´Ã¼ ¹ÝÈ¯
 	public void selectCommentByPrimaryKey(Long commentNo) {		
 		Comment comment = commentDAO.selectCommentByPrimaryKey(commentNo);
 		System.out.println("selectCommentByPrimaryKey(" + commentNo + "): ");
 		System.out.println(comment);
 	}
 
+//	userId·Î comment°´Ã¼ ¹ÝÈ¯
 	public void selectCommentByCondition(int userId) {
 		Map<String, Object> condition = new HashMap<String, Object>();
 		condition.put("userId", userId);
