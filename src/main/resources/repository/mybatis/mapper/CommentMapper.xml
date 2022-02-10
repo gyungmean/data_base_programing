@@ -6,8 +6,10 @@
 
 	<sql id="BaseColumns">
 		comment_no AS commentNo,
+		title AS title,
 		user_id AS userId,
 		comment_content AS commentContent,
+		course_id AS courseId,
 		reg_date AS regDate
 	</sql>
 

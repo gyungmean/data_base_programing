@@ -85,6 +85,6 @@ public class Comment implements Serializable {
 	@Override
 	public String toString() {
 		return "Comment [commentNo=" + commentNo + ", userId=" + userId + ", regDate=" + regDate + ", " + "courseId=" + courseId 
-				+ "title=" + title + "commentContent=" + commentContent + ", \n user=" + user + ", replies=" + replies + "]";
+				+ ", title=" + title + ", commentContent=" + commentContent + ", \n user=" + user + ", replies=" + replies + "]";
 	}	
 }
