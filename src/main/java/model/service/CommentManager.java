@@ -57,7 +57,7 @@ public class CommentManager {
 		comment.setRegDate(regDate);
 		
 		System.out.println("manager : " + comment);
-		int result = commentDAO.insertComment(comment);
+		long result = commentDAO.insertComment(comment);
 		System.out.println("insertComment(" + commentNo + ", ...): " + result);
 	}
 	
@@ -83,7 +83,7 @@ public class CommentManager {
 	public void insertReply(long replyId, long commentNo, int userId, String replyContent) {
 		Reply reply = new Reply(replyId, commentNo, userId, replyContent, 
 								Calendar.getInstance().getTime());
-		int result = commentDAO.insertReply(reply);		
+		long result = commentDAO.insertReply(reply);		
 		System.out.println("insertReply(" + replyId + ", " + commentNo + ",...): " + result);
 	}
 	

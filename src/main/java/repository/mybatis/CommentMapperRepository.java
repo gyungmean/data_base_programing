@@ -66,14 +66,14 @@ public class CommentMapperRepository {
 		}
 	}
 	
-	public int insertComment(Comment comment) {
+	public long insertComment(Comment comment) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
 			int result = sqlSession.getMapper(CommentMapper.class).insertComment(comment);
 			if (result > 0) {
 				sqlSession.commit();
 			} 
-			return result;
+			return comment.getCommentNo();
 		} finally {
 			sqlSession.close();
 		}
@@ -118,14 +118,14 @@ public class CommentMapperRepository {
 		}
 	}
 	
-	public int insertReply(Reply reply) {
+	public long insertReply(Reply reply) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
 			int result = sqlSession.getMapper(CommentMapper.class).insertReply(reply);
 			if (result > 0) {
 				sqlSession.commit();
 			} 			
-			return result;
+			return reply.getReplyId();
 		} finally {
 			sqlSession.close();
 		}
