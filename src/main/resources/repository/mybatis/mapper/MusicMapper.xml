@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repository.mybatis.mapper.MusicMapper">
+	<cache />
+	
+	<sql id="BaseColumns">
+		music_id AS musicId,
+		music_title AS musicTitle,
+		music_url AS musicUrl,
+		music_tag AS musicTag,
+		user_id AS userId
+	</sql>
+	
+	<select id="selectAllMusics"
+		resultType="model.Music">
+		SELECT <include refid="BaseColumns"/>
+		FROM MUSIC
+		ORDER BY music_id DESC
+	</select>
+	
+	<select id="selectMusicByMusicTag" parameterType="String" 
+		resultType="model.Music">
+		SELECT <include refid="BaseColumns"/>
+		FROM MUSIC
+		WHERE music_tag = #{%musicTag%}
+	</select>
+	
+	<insert id="insertMusic" parameterType="model.Music">
+		<selectKey keyProperty="musicId" resultType="int" order="BEFORE">
+			SELECT music_id_Seq.nextval AS music_id FROM DUAL
+		</selectKey>
+		INSERT INTO MUSIC (music_id, music_title, music_url, music_tag, user_id)
+		VALUES (#{musicId}, #{musicTitle}, #{musicUrl}, #{musicTag}, #{userId})
+	</insert>
+
+	<update id="updateMusic" parameterType="model.Music">
+		UPDATE MUSIC 
+		SET music_url = #{musicUrl}
+		WHERE music_id = #{musicId}
+	</update>
+ 
+	<delete id="deleteMusic" parameterType="int">
+		DELETE FROM MUSIC
+		WHERE music_id = #{musicId}
+	</delete>
+	
+	<delete id="deleteAllMusics">
+		DELETE FROM MUSIC
+	</delete>
+</mapper>
