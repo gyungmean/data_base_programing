@@ -10,12 +10,18 @@
 <meta name="viewport" content="width-device-width", initial-scale="1">
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
 <link rel="stylesheet" href="<c:url value='/comments_list/css/bootstrap.css' />">
+<link rel="stylesheet" href="<c:url value='/drive_course_rank/font-awesome.min.css' />">
+<link rel="stylesheet" href="<c:url value='/drive_course_rank/style.css' />">
 <meta charset="UTF-8">
 <title>드라이브 코스 주변 맛집 글 작성</title>
 </head>
 <body>
 	<script>
- 		commentCreate = function() {
+		searchCourseName = function(){
+			register.method="GET";
+			register.submit();
+		}
+		commentCreate = function() {
  			if(register.title.value=="") {
  				alert("title 확인하세요");
  				return false;
@@ -47,7 +53,7 @@
 	<!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form name="register" action="<c:url value='/comments/write' />">
+			<form id="register" name="register" action="<c:url value='/comments/write' />">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -59,12 +65,26 @@
 							<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
 						</tr>
 						<tr>
+							<td>
+							<input type="text" class="form-control" name="search_word" placeholder="코스 이름을 입력하세요.">
+	      					<!-- 여기에 검색 결과 -->
+	      					<select id="search_result" name="courseId">
+	      						<c:forEach var="course" items="${courseList}">
+	      							<option value="${course.course_id}">${course.course_name}</option>
+	      						</c:forEach>
+	      					</select>
+	      					<button type="submit" class="btn btn-primary pull-right" onClick="searchCourseName()">
+	        				<i class="fa fa-search"></i>
+	     					</button>
+	     					</td>
+						</tr>
+						<tr>
 							<td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
 				<!-- 글쓰기 버튼 생성 -->
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" onClick="commentCreate()">
+				<input type="submit" class="btn btn-primary pull-right" onClick="commentCreate()" value="글쓰기" >
 			</form>
 		</div>
 	</div>
