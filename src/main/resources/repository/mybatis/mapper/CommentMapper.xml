@@ -64,75 +64,39 @@
 		DELETE FROM COMMENTS
 	</delete>
 
-	<resultMap id="associationResultMap" type="Comment">
-		<id column="comment_no" jdbcType="NUMERIC" property="commentNo" />
-		<result column="user_id" jdbcType="VARCHAR" property="userId" />
-		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
-		<association property="user" column="user_id" javaType="User">
-			<id property="userId" column="user_id" />
-			<result property="nickname" column="nickname" />
-			<result property="password" column="password" />
-			<result property="email" column="email" />
-		</association>
-	</resultMap>
+	<resultMap id="collectionResultMap" type="Comment">
+      <id column="comment_no" jdbcType="BIGINT" property="commentNo" />
+      <result column="user_id" jdbcType="VARCHAR" property="userId" />
+      <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+      <result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
+      <collection property="replies" ofType="Reply">
+         <id property="replyId" column="reply_id" />
+         <result property="userId" column="reply_user_id" />
+         <result property="replyContent" column="reply_content" />
+         <result property="regDate" column="reply_date" />
+         <result property = "nickname" column = "nickname"/>
+      </collection>
+   </resultMap>
+   
+   <select id="selectCommentByPrimaryKeyCollection" parameterType="long"          
+      resultMap="collectionResultMap"> 
+      SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, 
+         r.reply_id, r.user_id AS reply_user_id, r.reply_content, r.reg_date AS reply_date, u.nickname AS nickname
+      FROM COMMENTS c, REPLY r, User_info u 
+      WHERE c.comment_no = r.comment_no AND u.user_id = r.user_id
+        AND c.comment_no = #{commentNo} 
+   </select> 
+   
+   <insert id="insertReply" parameterType="model.Reply">
+      <selectKey keyProperty="replyId" resultType="long" order="BEFORE">
+         SELECT reply_id_Seq.nextval AS reply_id FROM DUAL
+      </selectKey>
+      INSERT INTO REPLY (reply_id, comment_no, user_id, reply_content, reg_date)
+      VALUES (#{replyId}, #{commentNo}, #{userId}, #{replyContent}, #{regDate})
+   </insert>
 
-<!--  작성된 comment의 user정보
-	<select id="selectCommentByPrimaryKeyAssociation" parameterType="long" 		
-		resultMap="associationResultMap"> 
-		SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, u.nickname
-		FROM COMMENTS c, USERS u			
-		WHERE c.user_id = u.user_id  
-		  AND c.comment_no = #{commentNo} 
-	</select>
-	
-	<select id="selectCommentByPrimaryKeyAssociation2" parameterType="long" 		
-		resultType="Comment"> 
-		SELECT c.comment_no AS commentNo,
-			   c.user_id AS userId,
-			   c.comment_content AS commentContent,
-			   c.reg_date AS regDate,
-			   u.user_id AS user.userId,
-			   u.user_name AS user.userName, 			   
-			   u.phone AS user.phone,
-			   u.address AS user.address
-		FROM COMMENTS c, USERS u			
-		WHERE c.user_id = u.user_id  
-		  AND c.comment_no = #{commentNo} 
-	</select>
-	 -->
-	<!--  <resultMap id="collectionResultMap" type="Comment">
-		<id column="comment_no" jdbcType="BIGINT" property="commentNo" />
-		<result column="user_id" jdbcType="VARCHAR" property="userId" />
-		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
-		<collection property="replies" ofType="Reply">
-			<id property="replyId" column="reply_id" />
-			<result property="userId" column="reply_user_id" />
-			<result property="replyContent" column="reply_content" />
-			<result property="regDate" column="reply_date" />
-		</collection>
-	</resultMap>
-	
-	<select id="selectCommentByPrimaryKeyCollection" parameterType="long" 			
-		resultMap="collectionResultMap"> 
-		SELECT c.comment_no, c.user_id, c.comment_content, c.reg_date, 
-			r.reply_id, r.user_id AS reply_user_id, r.reply_content, r.reg_date AS reply_date
-		FROM COMMENTS c, REPLY r
-		WHERE c.comment_no = r.comment_no 
-		  AND c.comment_no = #{commentNo} 
-	</select> -->
-	
-	<insert id="insertReply" parameterType="model.Reply">
-		<selectKey keyProperty="replyId" resultType="long" order="BEFORE">
-			SELECT reply_id_Seq.nextval AS reply_id FROM DUAL
-		</selectKey>
-		INSERT INTO REPLY (reply_id, comment_no, user_id, reply_content, reg_date)
-		VALUES (#{replyId}, #{commentNo}, #{userId}, #{replyContent}, #{regDate})
-	</insert>
-
-	<delete id="deleteAllReplies">
-		DELETE FROM REPLY
-	</delete>
+   <delete id="deleteAllReplies">
+      DELETE FROM REPLY
+   </delete>
 
 </mapper>

@@ -143,4 +143,13 @@ public class CommentMapperRepository {
 			sqlSession.close();
 		}
 	}
+	
+	public Comment selectCommentByPrimaryKeyCollection(long commentNo) {
+	      SqlSession sqlSession = sqlSessionFactory.openSession();
+	      try {
+	         return (Comment)sqlSession.getMapper(CommentMapper.class).selectCommentByPrimaryKeyCollection(commentNo);
+	      } finally {
+	         sqlSession.close();
+	      }
+	   }
 }

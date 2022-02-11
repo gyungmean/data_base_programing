@@ -9,7 +9,16 @@ public class Reply implements Serializable {
    private Long commentNo;
    private int userId;
    private String replyContent;
-   private Date regDate;
+   private String nickname;
+   public String getNickname() {
+	return nickname;
+}
+
+public void setNickname(String nickname) {
+	this.nickname = nickname;
+}
+
+private Date regDate;
    
    public Reply() { }
    
