@@ -14,7 +14,7 @@ public class WriteCommentsController implements Controller{
 		HttpSession session = request.getSession();
     	int id = UserSessionUtils.getLoginUserId(session);
     	
-		return "/comments/comments_view.jsp";
+		return "/comments/comments_list.jsp";
 	}
 
 }

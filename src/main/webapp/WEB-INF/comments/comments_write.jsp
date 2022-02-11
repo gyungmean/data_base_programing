@@ -14,6 +14,20 @@
 <title>드라이브 코스 주변 맛집 글 작성</title>
 </head>
 <body>
+	<script>
+ 		commentCreate = function() {
+ 			if(register.title.value=="") {
+ 				alert("title 확인하세요");
+ 				return false;
+ 			}
+ 			if(register.content.value=="") {  //직접입력 선택시
+   				alert("content 확인하세요");
+   				return false;
+  			}
+ 			register.method="POST";
+ 			register.submit();
+ 		}
+ 	</script>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->
@@ -33,7 +47,7 @@
 	<!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="get" action="<c:url value='/comments/write' />">
+			<form name="register" action="<c:url value='/comments/write' />">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -50,7 +64,7 @@
 					</tbody>
 				</table>
 				<!-- 글쓰기 버튼 생성 -->
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" onClick="commentCreate()">
 			</form>
 		</div>
 	</div>
