@@ -10,11 +10,15 @@ public class Comment implements Serializable {
 	private int userId;
 	private Date regDate;
 	private String commentContent;
-	private User user;  			// User 객체 참조
-	private List<Reply> replies;	// Reply 객체들의 list 참조
+	private User user;  			// User 媛앹껜 李몄“
+	private List<Reply> replies;	// Reply 媛앹껜�뱾�쓽 list 李몄“
 	private String title;
-	private Course course;	//course 객체 참조
+	private Course course;	//course 媛앹껜 李몄“
 	private int courseId;
+	
+	public Comment() {
+		
+	}
 	
 	public int getCourseId() {
 		return courseId;
