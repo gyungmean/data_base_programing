@@ -15,6 +15,8 @@ public interface CommentMapper {
 	
 	List<Comment> selectCommentByCondition(Map<String, Object> condition);
 	
+	Comment selectCommentByPrimaryKeyCollection(long commentNo);
+	
 	int insertComment(Comment comment);   
  
 	int updateComment(Comment comment);

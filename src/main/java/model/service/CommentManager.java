@@ -31,10 +31,12 @@ public class CommentManager {
 	}
 	
 //	commentNo·Î comment°´Ã¼ ¹ÝÈ¯
-	public void selectCommentByPrimaryKey(Long commentNo) {		
+	public Comment selectCommentByPrimaryKey(Long commentNo) {		
 		Comment comment = commentDAO.selectCommentByPrimaryKey(commentNo);
+		
 		System.out.println("selectCommentByPrimaryKey(" + commentNo + "): ");
 		System.out.println(comment);
+		return comment;
 	}
 
 //	userId·Î comment°´Ã¼ ¹ÝÈ¯
@@ -46,10 +48,10 @@ public class CommentManager {
 		System.out.println(list);
 	}
 	
-	public void insertComment(Long commentNo, int userId, String title, String commentContent, int courseId) {
+	public void insertComment(int userId, String title, String commentContent, int courseId) {
 		Date regDate = Calendar.getInstance().getTime();		
 		Comment comment = new Comment();
-		comment.setCommentNo(commentNo);
+		comment.setCommentNo(10000L);
 		comment.setTitle(title);
 		comment.setUserId(userId);
 		comment.setCommentContent(commentContent);
@@ -58,7 +60,7 @@ public class CommentManager {
 		
 		System.out.println("manager : " + comment);
 		long result = commentDAO.insertComment(comment);
-		System.out.println("insertComment(" + commentNo + ", ...): " + result);
+		System.out.println("insertComment(" + result + ")");
 	}
 	
 	public void updateComment(Long commentNo, String commentContent) {
@@ -80,16 +82,26 @@ public class CommentManager {
 		System.out.println("deleteAllComments(): " + result);
 	}	
 	
-	public void insertReply(long replyId, long commentNo, int userId, String replyContent) {
-		Reply reply = new Reply(replyId, commentNo, userId, replyContent, 
+	public void insertReply( long commentNo, int userId, String replyContent) {
+		Reply reply = new Reply(10000L, commentNo, userId, replyContent, 
 								Calendar.getInstance().getTime());
 		long result = commentDAO.insertReply(reply);		
-		System.out.println("insertReply(" + replyId + ", " + commentNo + ",...): " + result);
+		System.out.println("insertReply(" + commentNo + ",...): " + result);
 	}
 	
 	public void deleteAllReplies() {		
 		int result = commentDAO.deleteAllReplies();
 		System.out.println("deleteAllReplys(): " + result);
 	}
+
+
+	public List<Reply> selectCommentByPrimaryKeyCollection(long commentNo) {
+		Comment comment = commentDAO.selectCommentByPrimaryKeyCollection(commentNo);	
+		
+		System.out.println("selectCommentByPrimaryKeyCollection(" + commentNo + "): ");
+		System.out.println(comment);
+		return comment.getReplies();
+	}
+	
 	
 }
