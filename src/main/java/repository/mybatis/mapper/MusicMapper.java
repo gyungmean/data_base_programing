@@ -8,7 +8,7 @@ import model.Music;
 public interface MusicMapper {
 	List<Music>selectAllMusics();
 	
-	Music selectMusicByMusicTag(String musicTag);
+	List<Music>selectMusicByMusicTag(String musicTag);
 	
 	int insertMusic(Music music);   
 	 

@@ -35,7 +35,7 @@ public class MusicMapperRepository {
 		}
 	}
 	
-	public Music selectMusicByMusicTag(String musicTag) {
+	public List<Music> selectMusicByMusicTag(String musicTag) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
 			return sqlSession.getMapper(MusicMapper.class).selectMusicByMusicTag(musicTag);			

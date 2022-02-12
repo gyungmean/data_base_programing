@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="repository.mybatis.mapper.MusicMapper">
-	<cache />
 	
 	<sql id="BaseColumns">
 		music_id AS musicId,
@@ -23,7 +22,7 @@
 		resultType="model.Music">
 		SELECT <include refid="BaseColumns"/>
 		FROM MUSIC
-		WHERE music_tag = #{%musicTag%}
+		WHERE music_tag LIKE '%'||#{musicTag}||'%' 
 	</select>
 	
 	<insert id="insertMusic" parameterType="model.Music">
