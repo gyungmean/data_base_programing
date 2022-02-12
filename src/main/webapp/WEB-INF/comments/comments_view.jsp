@@ -23,6 +23,7 @@
 	<%
 	Comment comment = (Comment)request.getAttribute("comment");
 	User user = (User)request.getAttribute("user");
+	
 
 	Long cmtNo = comment.getCommentNo();
 	
@@ -82,7 +83,6 @@
 						</tr> 
 					</thead>
 					<tbody>
-					
 						<c:forEach var="reply" items="${replyList}">  
 						<tr>
 							<td style="text-align: left;">${reply.replyContent}</td>
@@ -98,10 +98,12 @@
 					</tbody>
 		
 				</table>
-
+				
 				<input type = "hidden" name = "commentNo" value = "<%=comment.getCommentNo()%>">
-				<input type="hidden" name="user_id" value="<%=user.getUser_id()%>"> 
+				<input type="hidden" name="user_id" value="<%=user.getUser_id()%>">
+				<c:if test="${user.user_id ne -1}"> 
 				<input type="submit" class="btn" value="댓글입력">
+				</c:if>
 			</form>
 			<br>
 			<a href="bbs.jsp" class="btn btn-primary">목록</a>
