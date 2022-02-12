@@ -2,6 +2,7 @@ package model.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,10 +29,15 @@ public class MusicManager {
 		return musicMan;
 	}
 	
-	public void selectMusicByMusicTag(String musicTag) {
-		Music music = musicDAO.selectMusicByMusicTag(musicTag);
+	public List<Music> selectAllMusics() {
+		List<Music> musicLists = musicDAO.selectAllMusics();
+		return musicLists;
+	}
+	
+	public List<Music> selectMusicByMusicTag(String musicTag) {
 		System.out.println("selectMusicByMusicTag(" + musicTag + "): ");
-		System.out.println(music);
+		List<Music> musicLists= musicDAO.selectMusicByMusicTag(musicTag);
+		return musicLists;
 	}
 	
 	public void insertMusic(String musicTitle, String musicUrl, String musicTag, int userId) {		
