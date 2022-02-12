@@ -1,4 +1,5 @@
 package model.service;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -98,9 +99,19 @@ public class CommentManager {
 	public List<Reply> selectCommentByPrimaryKeyCollection(long commentNo) {
 		Comment comment = commentDAO.selectCommentByPrimaryKeyCollection(commentNo);	
 		
-		System.out.println("selectCommentByPrimaryKeyCollection(" + commentNo + "): ");
-		System.out.println(comment);
-		return comment.getReplies();
+    	List<Reply> replyList = new ArrayList<Reply>();
+    	
+		if(comment == null) {
+			Date date = new Date();
+			Reply reply = new Reply(11L,11L,10100,"첫번째 댓글을 작성해 보세요!", date);
+			reply.setNickname("관리자");
+			replyList.add(reply);
+		}
+		else {
+			replyList = comment.getReplies();
+		}
+		
+		return replyList;
 	}
 	
 	
