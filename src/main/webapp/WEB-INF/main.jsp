@@ -117,7 +117,7 @@
 			                </div>
 						</c:otherwise>  
 					</c:choose>	  
-                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크">
+                <div class="u-container-style u-effect-hover-zoom u-image-round u-list-item u-radius-7 u-repeater-item u-shading u-list-item-4" data-image-width="1280" data-image-height="690" data-href="<c:url value='/music' />">
                   <div class="u-background-effect u-expanded">
                     <div class="u-background-effect-image u-expanded u-image u-shading u-image-4" data-image-width="1280" data-image-height="690" data-href="음악추천 링크"></div>
                   </div>

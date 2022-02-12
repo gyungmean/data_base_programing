@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.course.*;
+import controller.music.AddMusicController;
+import controller.music.FindMusicController;
+import controller.music.ListMusicController;
 import controller.comments.*;
 
 public class RequestMapping {
@@ -60,6 +63,12 @@ public class RequestMapping {
         mappings.put("/comments/write", new WriteCommentsController());
         //게시물 자세히 보여주기
         mappings.put("/comments/view", new Comment_viewController());
+        
+        //뮤직 리스트 보여주기
+        mappings.put("/music", new ListMusicController());
+        mappings.put("/music/form", new ForwardController("/music/music_add.jsp"));
+        mappings.put("/music/add", new AddMusicController());
+        mappings.put("/music/find", new FindMusicController());
         
         logger.info("Initialized Request Mapping!");
     }
