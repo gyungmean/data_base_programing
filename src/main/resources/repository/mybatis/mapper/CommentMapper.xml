@@ -33,6 +33,14 @@
 		FROM COMMENTS
 		WHERE user_id = #{userId}
 	</select>
+	
+	<select id="selectCommentsByCourseId" parameterType="int"
+		resultType="model.Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		WHERE course_id = #{courseId}
+		ORDER BY comment_no DESC
+	</select>
  
 	<select id="selectCommentByCondition" parameterType="hashmap" 
 		resultType="model.Comment">

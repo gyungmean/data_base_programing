@@ -58,6 +58,8 @@ public class RequestMapping {
         //코스생성하기
         mappings.put("/course/course_create", new CreateCourseController()); 
         mappings.put("/course/form", new ForwardController("/course/course_create.jsp"));
+        //코스에서 해당 게시물 목록으로 이동하기
+        mappings.put("/course/course_move", new MoveCourseController()); 
         
         //게시물 리스트 보여주기
         mappings.put("/comments", new ListCommentsController());
@@ -66,7 +68,9 @@ public class RequestMapping {
         mappings.put("/comments/write", new WriteCommentsController());
         //게시물 자세히 보여주기
         mappings.put("/comments/view", new Comment_viewController());
-        
+        //게시물에서 해당 코스로 이동하기
+        mappings.put("/comments/move", new MoveCommentsController());
+       
         //뮤직 리스트 보여주기
         mappings.put("/music", new ListMusicController());
         mappings.put("/music/form", new ForwardController("/music/music_add.jsp"));

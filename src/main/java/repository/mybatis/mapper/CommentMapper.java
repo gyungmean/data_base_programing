@@ -15,6 +15,8 @@ public interface CommentMapper {
 	
 	List<Comment> selectCommentsByUserId(int userId);
 	
+	List<Comment> selectCommentsByCourseId(int userId);
+	
 	List<Comment> selectCommentByCondition(Map<String, Object> condition);
 	
 	Comment selectCommentByPrimaryKeyCollection(long commentNo);

@@ -49,6 +49,14 @@ public class CommentManager {
 		System.out.println(list);
 	}
 	
+//	courseId·Î comment°´Ã¼ ¹ÝÈ¯
+	public List<Comment> selectCommentByCourseId(int courseId) {
+		List<Comment> list = commentDAO.selectCommentsByCourseId(courseId);
+		System.out.println("selectCommentByCourseId(" + courseId + "): ");
+		System.out.println(list);
+		return list;
+	}
+	
 	public void insertComment(int userId, String title, String commentContent, int courseId) {
 		Date regDate = Calendar.getInstance().getTime();		
 		Comment comment = new Comment();
