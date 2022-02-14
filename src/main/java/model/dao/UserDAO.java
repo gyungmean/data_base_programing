@@ -68,6 +68,27 @@ public class UserDAO {
 		}		
 		return 0;
 	}
+	
+	public int updateNickName(int user_id, String nickName) throws SQLException {
+		String sql = "UPDATE USER_INFO "
+					+ "SET nickname=? "
+					+ "WHERE user_id=?";
+		Object[] param = new Object[] {nickName, user_id};				
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
+			
+		try {				
+			int result = jdbcUtil.executeUpdate();	// update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
 
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.

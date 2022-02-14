@@ -33,6 +33,22 @@ form{
   color: #9DBFAF;
 }
 
+.nickname{
+	height: 20px;
+	border: 3px solid #00B4CC;
+}
+.nicknameButton {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 50px 50px 50px 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .searchTerm:focus{
   color: #00B4CC;
 }
@@ -74,6 +90,12 @@ form{
 }
 
 .rank-wrap{
+  width: 45%;
+  margin: 0 auto;
+  display: relative;
+}
+
+.info-wrap{
   width: 45%;
   margin: 0 auto;
   display: relative;
@@ -137,5 +159,80 @@ ol ol {
 
 .course-name{
 	font-size: 28px;
+}
+
+.ul-rounded-list a {
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  *padding: .4em;
+  margin: .5em 0;
+    background: #ddd;
+  color: #444;
+    text-decoration: none;
+  border-radius: .3em;
+    transition: all .5s ease-out; 
+}
+.ul-rounded-list a:hover{
+  background: #eee;
+}
+
+.ul-rounded-list a:hover:before{
+    transform: rotate(360deg);
+    -webkit-transform:rotate(360deg);
+}
+
+.ul-rounded-list a:before{
+  font-family: FontAwesome;
+  content: "\f087";
+  position: absolute; 
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: #87ceeb;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+}
+
+.row {
+ 	display:inlin-blocke;
+ 	text-align: center;
+}
+.row label {
+  padding: 3px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.row label input[type="checkbox"] {
+  display: none;
+}
+
+.row label .icon-box {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #353746;
+  color: #fff;
+  border-radius: 30px;
+  transition: 0.5s;
+  user-select: none;
+}
+
+.row label input[type="checkbox"]:checked ~ .icon-box {
+  background: #3992F3;
+  color: #fff;
+}
+
+.row label .icon-box span {
+  margin: 5px;
+  font-size: 15px;
 }
 
