@@ -111,4 +111,12 @@ public class UserManager {
 	public int createTheme(int user_id, int theme_id) throws SQLException {
 		return userDAO.createUserT(user_id,  theme_id);
 	}
+	
+	public int deleteUserR(int user_id) throws SQLException {
+		return userDAO.deleteUserR(user_id);
+	}
+
+	public int deleteUserT(int user_id) throws SQLException {
+		return userDAO.deleteUserT(user_id);
+	}
 }

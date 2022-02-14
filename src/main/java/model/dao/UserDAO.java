@@ -73,6 +73,7 @@ public class UserDAO {
 		String sql = "UPDATE USER_INFO "
 					+ "SET nickname=? "
 					+ "WHERE user_id=?";
+		System.out.println(sql);
 		Object[] param = new Object[] {nickName, user_id};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			
@@ -279,6 +280,42 @@ public class UserDAO {
 			jdbcUtil.close();	// resource 반환
 		}		
 		return 0;			
+	}
+	
+	public int deleteUserR(int user_id) throws SQLException {
+		String sql = "DELETE FROM USER_REGION WHERE user_id=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {user_id});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+	
+	public int deleteUserT(int user_id) throws SQLException {
+		String sql = "DELETE FROM USER_THEME WHERE user_id=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {user_id});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
 	}
 	
 

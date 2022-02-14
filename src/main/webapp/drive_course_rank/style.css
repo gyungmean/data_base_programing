@@ -49,6 +49,18 @@ form{
   font-size: 16px;
 }
 
+.keyWordButton {
+  width: 100px;
+  height: 28px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 50px 50px 50px 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .searchTerm:focus{
   color: #00B4CC;
 }

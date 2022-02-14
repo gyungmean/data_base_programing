@@ -26,7 +26,8 @@
    	<details>
     <summary>닉네임 수정하기</summary>
     <form name="nickname" action="<c:url value='/user/info' />" method="POST">
-		<input type="text" id="nickname" class="nickname">​&nbsp;<button type="submit" class="nicknameButton"><i class="fa fa-check" aria-hidden="true"></i></button>
+		<input type="text" name="newNickname" class="nickname">​&nbsp;<button type="submit" class="nicknameButton"><i class="fa fa-check" aria-hidden="true"></i></button>
+    	<input type="hidden" name="formName" value="changeNickName">
     </form>
     </details>
    	
@@ -45,7 +46,11 @@
    	</h3>
    	<details>
     <summary>선호 키워드 수정하기</summary>
-    <p>
+    <br>
+    <form name="keyWord" action="<c:url value='/user/info' />" method="POST">
+    <button type="submit" class="keyWordButton">수정하기</button>
+    <br><br>
+    <input type="hidden" name="formName" value="changeKeyWord">
     <div class="wrap-keyword">
 			<div class="region-wrap">
 				<div class="title">선호지역<br></div>
@@ -170,7 +175,7 @@
       		</div>
 		</div>
 		</div>
-    </p>
+		</form>
     </details>
    	<br>
    	<h1><i class="fa fa-heart" aria-hidden="true" style="color:#00B4CC;"></i> 좋아요 한 코스</h1>

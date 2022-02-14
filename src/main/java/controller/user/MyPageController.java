@@ -39,17 +39,49 @@ public class MyPageController implements Controller {
 	    	String userNickname = user.getNickname();
 	    	String email = user.getEmail();
 	    	
-	    	if (request.getMethod().equals("POST")) {	
-	    		log.debug("POST 형식으로 받았음 / " + userId + "의 닉네임 변경");
-	    		String newNickname = request.getParameter("nickname");
-	    		int result = usermanager.updateNickName(userId, newNickname);
-	    		log.debug("nick name update! : " + result);
-	    		if(result == 0) {
-	    			log.debug("update faile");
-	    			return "/user/user_info.jsp";
+	    	if (request.getMethod().equals("POST")) {
+	    		String formName = request.getParameter("formName");
+	    		log.debug("POST 형식으로 받았음 / action: " + formName);
+	    		if(formName.equals("changeNickName")) {
+	    			log.debug("userId: " + userId + "의 닉네임 변경");
+	    			
+		    		String newNickname = request.getParameter("newNickname");
+		    		if(newNickname == null) {
+		    			log.debug("nickName is null");
+		    			return "redirect:/user/info";
+		    		}
+		    		log.debug(newNickname + " 으로 닉네임 변경");
+		    		int result = usermanager.updateNickName(userId, newNickname);
+		    		log.debug("nick name update! : " + result);
+		    		if(result == 0) {
+		    			log.debug("update faile");
+		    			return "redirect:/main";
+		    		}
 	    		}
-				return "/user/user_info.jsp";   // 검색한 사용자 정보를 update form으로 전송     	
-		    }
+	    		else if(formName.equals("changeKeyWord")) {
+	    			log.debug("userId: " + userId + "의 선호 키워드 변경");
+	    			
+	    			usermanager.deleteUserR(userId);
+	    			usermanager.deleteUserT(userId);
+	    			
+	    			String[] theme = request.getParameterValues("themeIdList");
+	    			String[] region = request.getParameterValues("region_id");
+	    			
+	    			if(theme == null && region == null) {
+	    				log.debug("keyWord is null");
+	    				return "redirect:/user/info";
+	    			}
+	    			
+	    			for(String item : theme) {
+	    				usermanager.createTheme(userId, Integer.parseInt(item));
+	    			}
+	    			for(String item : region) {
+	    				usermanager.createRegion(userId, Integer.parseInt(item));
+	    			}
+	    		}
+				return "redirect:/user/info";
+	    	}
+   	
 			request.setAttribute("userId", userId);
 			request.setAttribute("userNickname", userNickname);
 			request.setAttribute("email", email);
@@ -84,7 +116,6 @@ public class MyPageController implements Controller {
 			
 			return "/user/user_info.jsp";
 		} catch(Exception e) {
-			request.setAttribute("userId", 0);
 			return "redirect:/main";
 		}
 		
