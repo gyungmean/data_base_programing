@@ -135,8 +135,9 @@
       <input type="hidden" name="course_id" value="<%=course.getCourse_id()%>"> 
       <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary" onClick="likeCreate()" style="font-family: 'Do Hyeon', sans-serif;">좋아요</a>
-        <a class="btn btn-outline-primary" href="#" style="font-family: 'Do Hyeon', sans-serif;">주변 갈만한 곳</a>
-        <a class="btn btn-outline-primary" href="#" style="font-family: 'Do Hyeon', sans-serif;">드라이브 음악 추천</a>
+        <a class="btn btn-outline-primary" 
+        href="<c:url value='/course/course_move'><c:param name='course_id' value='${course.course_id}'/></c:url>"
+        style="font-family: 'Do Hyeon', sans-serif;">주변 갈만한 곳</a>
       </nav>
     </div>
   </div>

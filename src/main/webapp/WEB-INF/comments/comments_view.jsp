@@ -106,8 +106,11 @@
 				</c:if>
 			</form>
 			<br>
-			<a href="bbs.jsp" class="btn btn-primary">목록</a>
-			
+			<a class="btn btn-primary"  
+			href="<c:url value='/comments'></c:url>">목록</a>
+			<a class="btn btn-primary" 
+        	href="<c:url value='/comments/move'>
+        	<c:param name='course_id' value='${comment.getCourseId()}' /></c:url>">게시물의 코스 정보 보기</a>
 
 		</div>
 	</div>
