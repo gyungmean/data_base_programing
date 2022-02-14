@@ -50,6 +50,10 @@ public class UserManager {
 		return userDAO.update(user);
 	}	
 	
+	public int updateNickName(int user_id, String nickName) throws SQLException, UserNotFoundException {
+		return userDAO.updateNickName(user_id, nickName);
+	}
+	
 	public int remove(int user_id) throws SQLException, UserNotFoundException {
 		return userDAO.remove(user_id);
 	}

@@ -38,7 +38,10 @@ public class RequestMapping {
 //      mappings.put("/user/update", new UpdateUserController());        
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/delete", new DeleteUserController());
-        mappings.put("/user/selectKeyword", new KeywordUserController());       
+        mappings.put("/user/selectKeyword", new KeywordUserController());
+        
+        // 사용자 정보
+        mappings.put("/user/info", new MyPageController());
         
         //코스매칭
         //ListCourseController 전체출력

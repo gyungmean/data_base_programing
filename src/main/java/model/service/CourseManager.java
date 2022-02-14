@@ -120,4 +120,8 @@ public class CourseManager {
 	public List<Course> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
 		return courseDAO.notKeywordCourseList(regionString, themeString);
 	}
+	
+	public List<Course> findCourseByUserId(int user_id) throws SQLException{
+		return courseDAO.findCourseByUserId(user_id);
+	}
 }

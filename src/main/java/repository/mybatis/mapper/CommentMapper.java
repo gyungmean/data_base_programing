@@ -13,6 +13,8 @@ public interface CommentMapper {
 	
 	Comment selectCommentByPrimaryKey(long commentNo);
 	
+	List<Comment> selectCommentsByUserId(int userId);
+	
 	List<Comment> selectCommentByCondition(Map<String, Object> condition);
 	
 	Comment selectCommentByPrimaryKeyCollection(long commentNo);

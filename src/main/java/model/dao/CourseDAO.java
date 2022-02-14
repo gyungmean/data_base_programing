@@ -642,5 +642,63 @@ public class CourseDAO {
 		      }
 		      return null;
 	   }
+	   
+	 //user_id로 찾기
+	   public List<Course> findCourseByUserId(int user_id) throws SQLException{
+		   String sql ="SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+		             + "FROM Course c, THEME_COURSE tc, THEME t "
+		             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
+			   		+ "AND user_id=? ";
+			   
+			   jdbcUtil.setSqlAndParameters(sql, new Object[] {user_id});
+			   
+			   try {
+			       ResultSet rs = jdbcUtil.executeQuery();      // query 실행
+			       List<Course> courseList = new ArrayList<Course>();   // course들의 리스트 생성
+			       Course c = null;
+			       List<Theme> themeList = new ArrayList<Theme>();
+			       int preT = 0;
+			       while (rs.next()) {
+			    	   if (preT == Integer.parseInt(rs.getString("course_id"))) {
+			    		   Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+			 	          themeList.add(t);
+			    	   }
+			    	   else {
+			    		   if(themeList.size() != 0) {
+			        		c.setThemeList(themeList);
+			        		courseList.add(c);
+			        		themeList = new ArrayList<Theme>();
+			        		}
+			        		c = new Course(         // Course 객체를 생성하여 현재 행의 정보를 저장
+					        		rs.getInt("course_id"),
+									rs.getString("course_name"),
+									null,
+									null,
+									null,
+									rs.getString("time"),
+									0,
+									rs.getInt("region_id"),
+									themeList,
+									0);
+			        		preT = rs.getInt("course_id");
+			       		   	
+			  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
+			  	          themeList.add(t);
+			    	   }
+			    	       
+			       }
+
+		    	   if(themeList.size() != 0) {
+		        		c.setThemeList(themeList);
+		        		courseList.add(c);
+		        		}
+		    	   return courseList;  
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();		// resource 반환
+			}
+			return null;
+	   }
 }
 

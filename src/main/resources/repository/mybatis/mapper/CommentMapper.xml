@@ -26,6 +26,13 @@
 		FROM COMMENTS
 		WHERE comment_no = #{commentNo}
 	</select>
+	
+	<select id="selectCommentsByUserId" parameterType="int"
+		resultType="model.Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		WHERE user_id = #{userId}
+	</select>
  
 	<select id="selectCommentByCondition" parameterType="hashmap" 
 		resultType="model.Comment">

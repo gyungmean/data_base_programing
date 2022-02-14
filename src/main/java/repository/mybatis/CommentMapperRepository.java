@@ -48,6 +48,15 @@ public class CommentMapperRepository {
 		}
 	}
 	
+	public List<Comment> selectCommentsByUserId(int userId){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return sqlSession.getMapper(CommentMapper.class).selectCommentsByUserId(userId);			
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
 	public Comment selectCommentByPrimaryKey(long commentNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
