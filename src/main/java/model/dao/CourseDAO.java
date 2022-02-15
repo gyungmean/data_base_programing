@@ -1,3 +1,4 @@
+
 package model.dao;
 
 import java.sql.ResultSet;
@@ -19,13 +20,13 @@ public class CourseDAO {
      * 코스 관리 테이블에 새로운 코스 생성.
      */
 	public int create(Course course) throws SQLException {
-	    String sql = "INSERT INTO COURSE VALUES (course_id_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";      
+	    String sql = "INSERT INTO COURSE VALUES (course_id_Seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";      
 	    Object[] param = new Object[] {course.getCourse_name(),
 	                            (course.getDeparture()!= null) ? course.getDeparture() : null, 
 	                            (course.getStopover()!= null) ? course.getStopover() : null,
 	                            (course.getDestination()!= null) ? course.getDestination() : null,
 	                            course.getTime(), ((course.getParking() != 0) ? course.getParking() : null), 
-	                            course.getRegion_id(), course.getUser_id()};            
+	                            course.getRegion_id(), course.getUser_id(), ((course.getUrl() != null) ? course.getUrl() : null)};            
 	    
 	    jdbcUtil.setSqlAndParameters(sql, param);   // JDBCUtil 에 insert문과 매개 변수 설정
 	     String key[] = {"course_id"};
@@ -95,7 +96,7 @@ public class CourseDAO {
 
  // 채연 코드
  public List<Course> findCourse(String course_name) throws SQLException {
-	    String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, theme_name "
+	    String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, theme_name, c.url "
 	             + "FROM Course c, THEME_COURSE tc, THEME t "
 	             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 	             + "AND course_name LIKE ?"
@@ -129,7 +130,8 @@ public class CourseDAO {
 								0,
 								rs.getInt("region_id"),
 								themeList,
-								0);
+								0,
+								rs.getString("url"));
 		        		preT = rs.getInt("course_id");
 		       		   	
 		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
@@ -153,7 +155,7 @@ public class CourseDAO {
  
  
  public Course findCourseById(int course_id) throws SQLException {
-	    String sql = "SELECT course_id, course_name, time, region_id, theme_id, theme_name "
+	    String sql = "SELECT course_id, course_name, time, region_id, theme_id, theme_name, c.url "
 	             + "FROM Course c, THEME_COURSE tc, THEME t "
 	             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 	             + " AND course_id=?";    
@@ -177,7 +179,8 @@ public class CourseDAO {
 					0,
 					rs.getInt("region_id"),
 					themeList,
-					0);
+					0,
+					rs.getString("url"));
 	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
 	          themeList.add(t);
 	       }  
@@ -197,7 +200,7 @@ public class CourseDAO {
 	
 	//선호 키워드 선택 안한 사람들한테 보일 코스매칭 화면 리스트
 	public List<Course> allCourseList() throws SQLException {
-		String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+		String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name, c.url "
 	             + "FROM Course c, THEME_COURSE tc, THEME t "
 	             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 				+ "ORDER BY c.course_id ";
@@ -232,7 +235,9 @@ public class CourseDAO {
 								0,
 								rs.getInt("region_id"),
 								themeList,
-								0);
+								0,
+								rs.getString("url")
+		        				);
 		        		preT = rs.getInt("course_id");
 		       		   	
 		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
@@ -256,7 +261,7 @@ public class CourseDAO {
 	
 	//선호 키워드 따라서 정렬하는 함수(중간때는 보류)
 	public List<Course> keywordCourseList(List<String> regionString, List<String> themeString) throws SQLException {
-		String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+		String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name, c.url "
         		+ "FROM Course c, THEME_COURSE tc, THEME t "
 	            + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 	            + "AND t.theme_id IN (";
@@ -311,7 +316,8 @@ public class CourseDAO {
 								0,
 								rs.getInt("region_id"),
 								themeList,
-								0);
+								0,
+								rs.getString("url"));
 		        		preT = rs.getInt("course_id");
 		       		   	
 		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
@@ -335,7 +341,7 @@ public class CourseDAO {
 	
 	//선호 키워드 따라서 정렬하는 함수(중간때는 보류)
 		public List<Course> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException {
-			String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+			String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name, c.url "
 	        		+ "FROM Course c, THEME_COURSE tc, THEME t "
 		            + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 		            + "AND t.theme_id NOT IN (";
@@ -390,7 +396,8 @@ public class CourseDAO {
 									0,
 									rs.getInt("region_id"),
 									themeList,
-									0);
+									0,
+									rs.getString("url"));
 			        		preT = rs.getInt("course_id");
 			       		   	
 			  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
@@ -415,7 +422,7 @@ public class CourseDAO {
 	
 	//조건 맞춰서 매칭 후 리스트
 	public List<Course> matchCourse(String time, int region_id, List<String> themeString) throws SQLException {
-        String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+        String sql = "SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name, c.url "
         		+ "FROM Course c, THEME_COURSE tc, THEME t "
 	            + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 	            + "AND t.theme_id IN (";
@@ -460,7 +467,8 @@ public class CourseDAO {
 								0,
 								rs.getInt("region_id"),
 								themeList,
-								0);
+								0,
+								rs.getString("url"));
 		        		preT = rs.getInt("course_id");
 		       		   	
 		  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
@@ -484,7 +492,7 @@ public class CourseDAO {
 	
 	//상세보기
 	public Course detailCourse(int course_id) throws SQLException{
-		String sql = "SELECT c.course_id, course_name, departure, stopover, destination, time, parking, region_id, user_id, t.theme_id, t.theme_name "
+		String sql = "SELECT c.course_id, course_name, departure, stopover, destination, time, parking, region_id, user_id, t.theme_id, t.theme_name, c.url "
 	             + "FROM Course c, THEME_COURSE tc, THEME t "
 	             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 	             + "AND c.course_id=? ";    
@@ -507,7 +515,9 @@ public class CourseDAO {
 					rs.getInt("parking"),
 					rs.getInt("region_id"),
 					themeList,
-					rs.getInt("user_id"));
+					rs.getInt("user_id"),
+					rs.getString("url")
+						);
 				
 				Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));
 		          themeList.add(t);
@@ -642,9 +652,7 @@ public class CourseDAO {
 		      }
 		      return null;
 	   }
-	   
-	 //user_id로 찾기
-	   public List<Course> findCourseByUserId(int user_id) throws SQLException{
+ public List<Course> findCourseByUserId(int user_id) throws SQLException{
 		   String sql ="SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
 		             + "FROM Course c, THEME_COURSE tc, THEME t "
 		             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
@@ -679,7 +687,8 @@ public class CourseDAO {
 									0,
 									rs.getInt("region_id"),
 									themeList,
-									0);
+									0,
+									rs.getString("url"));
 			        		preT = rs.getInt("course_id");
 			       		   	
 			  	          Theme t = new Theme(rs.getInt("theme_id"), rs.getString("theme_name"));

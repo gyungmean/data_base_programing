@@ -13,11 +13,12 @@ public class Course {
    private int region_id;
    private List<Theme> themeList;
    private int user_id;
+   private String url;
    
    public Course() { }
    
    public Course(int course_id, String course_name, String departure, String stopover, String destination, String time,
-		   int parking, int region_id, List<Theme> themeList, int user_id) {
+		   int parking, int region_id, List<Theme> themeList, int user_id, String url) {
       super();
       this.course_id = course_id;
       this.course_name = course_name;
@@ -29,6 +30,7 @@ public class Course {
       this.region_id = region_id;
       this.themeList = themeList;
       this.user_id = user_id;
+      this.url = url;
    }
 
    public int getCourse_id() {
@@ -121,5 +123,13 @@ public class Course {
 				+ " "   +  region_id
 				+ " "   +  themeList
 				+ " "   +  user_id + "\n";
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
