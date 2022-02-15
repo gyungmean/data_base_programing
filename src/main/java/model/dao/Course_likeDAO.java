@@ -112,7 +112,9 @@ public class Course_likeDAO {
 		          				rs.getInt("parking"),
 		          				rs.getInt("region_id"),
 		          				themeList,
-		          				rs.getInt("user_id"));
+		          				rs.getInt("user_id"),
+		          				rs.getString("url")
+		          				);
 		        		
 		        		preT = rs.getInt("course_id");
 		       		   	

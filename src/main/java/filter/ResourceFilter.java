@@ -27,6 +27,8 @@ public class ResourceFilter implements Filter {
         resourcePrefixs.add("/driveMain");
         resourcePrefixs.add("/user_login");
         resourcePrefixs.add("/user_login_register");
+
+        resourcePrefixs.add("/uploaded");
     }
 
     private RequestDispatcher defaultRequestDispatcher;

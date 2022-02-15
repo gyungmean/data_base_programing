@@ -69,16 +69,13 @@
 						return false;
 					}
 					else{
-						form.method="GET";
+						form.method="POST";
 						form.submit();
 						return true;
 					}
 				}
 				
-				nameCkeck = function() {
-					form.method="GET";
-					form.submit();
-				}
+			
 			</script>
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -101,7 +98,7 @@
 
 							<!-- Form -->
 								<section>
-									<form name="form" action = "<c:url value='/course/course_create'/>" method="get" >
+									<form name="form" action = "<c:url value='/course/course_create'/>" method="POST" enctype="multipart/form-data" >
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="course_name" id="course_name" placeholder="코스 이름" required/>
@@ -289,6 +286,8 @@
 								            		<span class="icon-box">산</span>
 								        		</label>
 											</div><br>
+											<input type="file" name="file">
+											<br>
 								
 											<div class="col-12">
 												<ul class="actions">
