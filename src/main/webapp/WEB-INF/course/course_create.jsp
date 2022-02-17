@@ -98,7 +98,7 @@
 
 							<!-- Form -->
 								<section>
-									<form name="form" action = "<c:url value='/course/course_create'/>" method="POST" enctype="multipart/form-data" >
+									<form name="form" action = "<c:url value='/course/course_create'/>" method="POST">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="course_name" id="course_name" placeholder="코스 이름" required/>
@@ -286,8 +286,7 @@
 								            		<span class="icon-box">산</span>
 								        		</label>
 											</div><br>
-											<input type="file" name="file">
-											<br>
+											<br>사진 url:<input name='url' type='text'/><br/>
 								
 											<div class="col-12">
 												<ul class="actions">
