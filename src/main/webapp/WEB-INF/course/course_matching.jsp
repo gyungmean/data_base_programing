@@ -264,8 +264,9 @@
 							 <c:forEach var="course" items="${courseList}">  	
 								<article class="style6">
 									<span class="image">
-										<img src="<c:url value='/drive_course_matching/images/pic06.jpg'/>" alt="" />
+										<img src="${course.url}" width="200" height="200" alt="" />
 									</span>
+									
 									<a href="<c:url value='/course/course_detail'>
 									<c:param name='course_id' value='${course.course_id}'/>
 			 		 				</c:url>">

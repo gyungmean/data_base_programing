@@ -76,7 +76,17 @@
  	</script>
 <div class="container" align = "center">
   <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
+
+  </header>
+</div>
+
+<main class="container" align = "center">
+
+<form name="like" id="like" action="<c:url value='/course/course_detail' />">
+  <div class="row g-5" align = "center">
+    <div class="col-md-8" align = "center">
+      <article class="blog-post" align = "center">
+        <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
         <a class="link-secondary" href="<c:url value='/course' />" style="font-family: 'Do Hyeon', sans-serif;">뒤로 가기</a>
       </div>
@@ -90,15 +100,7 @@
         </a>
       </div>
     </div>
-  </header>
-</div>
-
-<main class="container" align = "center">
-
-<form name="like" id="like" action="<c:url value='/course/course_detail' />">
-  <div class="row g-5" align = "center">
-    <div class="col-md-8" align = "center">
-      <article class="blog-post" align = "center">
+	<img src="${course.url}" width="450" height="250" alt="" />
       <table class="table" align = "center">
           <tbody align = "center"> 
             <tr>
