@@ -80,20 +80,20 @@ public class courseTest {
 //      }catch(Exception e) {
 //    	  System.out.println("allCourse실패");
 //      }
-      
-      List<Course> courseList = new ArrayList<Course>();
-      List<String> regionString = new ArrayList<String>();
-      regionString.add("1");
-      List<String> themeString = new ArrayList<String>();
-      themeString.add("1");
-      themeString.add("2");
-      try {
-    	  courseList = manager.keywordCourseList(regionString, themeString);
-    	  System.out.println(courseList.toString());
-    	  
-      }catch(Exception e) {
-    	  System.out.println("실패");
-      }
+//      
+//      List<Course> courseList = new ArrayList<Course>();
+//      List<String> regionString = new ArrayList<String>();
+//      regionString.add("1");
+//      List<String> themeString = new ArrayList<String>();
+//      themeString.add("1");
+//      themeString.add("2");
+//      try {
+//    	  courseList = manager.keywordCourseList(regionString, themeString);
+//    	  System.out.println(courseList.toString());
+//    	  
+//      }catch(Exception e) {
+//    	  System.out.println("실패");
+//      }
       
    }
 }
