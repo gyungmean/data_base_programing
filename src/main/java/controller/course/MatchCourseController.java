@@ -1,6 +1,7 @@
 package controller.course;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +35,11 @@ public class MatchCourseController implements Controller{
     		themeStringList.add(s);
     	}
     	
-		List<Course> courseList = manager.matchCourse(time, region_id, themeIdList);
-		
+    	LinkedHashSet<Integer> courseIdList = manager.matchCourse(time, region_id, themeIdList);
+    	List<Course> courseList = new ArrayList<Course>();
+    	for(int i : courseIdList) {
+			courseList.add(manager.courseInfo(i));
+		}
 		String regionName = manager.regionName(region_id);
 		List<String> themeName = manager.themeName(themeStringList);
 	

@@ -1,6 +1,7 @@
 package controller.course;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,8 +39,10 @@ public class ListCourseController implements Controller {
     	List<Region>regionList = manager2.regionList(id);
     	List<Theme>themeList = manager2.themeList(id);
     	
-    	List<Course> courseList1;
-    	List<Course> courseList2;
+    	LinkedHashSet<Integer> courseList1;
+    	LinkedHashSet<Integer> courseList2;
+    	LinkedHashSet<Integer> courseList3;
+    	LinkedHashSet<Integer> courseList4;
 
     	if(regionList.size() == 0 || themeList.size() == 0) { //로그인은 했으나 선호키워드를 선택하지 않은 경우
     		courseList = manager.allCourseList(); 
@@ -55,13 +58,24 @@ public class ListCourseController implements Controller {
     		}
     		
     		courseList1 = manager.keywordCourseList(regionString, themeString);
-    		courseList2 = manager.notKeywordCourseList(regionString, themeString);
+    		System.out.println(courseList1.size());
+    		courseList2 = manager.keywordCourseList2(regionString, themeString);
+    		System.out.println(courseList2.size());
+    		courseList3 = manager.keywordCourseList3(regionString, themeString);
+    		System.out.println(courseList3.size());
+    		courseList4 = manager.notKeywordCourseList(regionString, themeString);
+    		System.out.println(courseList4.size());
     		
-    		courseList.addAll(courseList1);
-    		courseList.addAll(courseList2);
+    		LinkedHashSet<Integer> courseIdList = new LinkedHashSet<Integer>();
+    		courseIdList.addAll(courseList1);
+    		courseIdList.addAll(courseList2);
+    		courseIdList.addAll(courseList3);
+    		courseIdList.addAll(courseList4);
+    		
+    		for(int i : courseIdList) {
+    			courseList.add(manager.courseInfo(i));
+    		}
     	}
-		
-		
 		
 		// courseList 객체를 request에 저장하여 코스 리스트 화면으로 이동(forwarding)
 		request.setAttribute("courseList", courseList);	

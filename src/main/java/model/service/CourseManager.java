@@ -4,6 +4,7 @@ import model.dao.CourseDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import model.Course;
@@ -79,7 +80,7 @@ public class CourseManager {
 	}
 	//매치된 코스 반환
 	
-	public List<Course> matchCourse(String time, int region_id, List<Integer> themeList) throws SQLException {
+	public LinkedHashSet<Integer> matchCourse(String time, int region_id, List<Integer> themeList) throws SQLException {
 		List<String> idString = new ArrayList<String>();
 		for(int theme :themeList) {
 			idString.add(Integer.toString(theme));
@@ -113,11 +114,19 @@ public class CourseManager {
 		return courseDAO.countCourse();
 	}
 	
-	public List<Course> keywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
+	public LinkedHashSet<Integer> keywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
 		return courseDAO.keywordCourseList(regionString, themeString);
 	}
 	
-	public List<Course> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
+	public LinkedHashSet<Integer> keywordCourseList2(List<String> regionString, List<String> themeString) throws SQLException{
+		return courseDAO.keywordCourseList2(regionString, themeString);
+	}
+	
+	public LinkedHashSet<Integer> keywordCourseList3(List<String> regionString, List<String> themeString) throws SQLException{
+		return courseDAO.keywordCourseList3(regionString, themeString);
+	}
+	
+	public LinkedHashSet<Integer> notKeywordCourseList(List<String> regionString, List<String> themeString) throws SQLException{
 		return courseDAO.notKeywordCourseList(regionString, themeString);
 	}
 	
