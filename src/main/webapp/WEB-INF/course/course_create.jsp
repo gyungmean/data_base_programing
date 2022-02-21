@@ -234,6 +234,10 @@
 				
 												<div class="col-12"> 테마 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<label>
+								        			<input type="checkbox" name="themeIdList" value="14"/>
+								            		<span class="icon-box">가족</span>
+								        		</label>
+												<label>
 								        			<input type="checkbox" name="themeIdList" value="1" required/>
 								            		<span class="icon-box">데이트</span>
 								        		</label>
@@ -284,6 +288,14 @@
 								        		<label>
 								        			<input type="checkbox" name="themeIdList" value="13"/>
 								            		<span class="icon-box">산</span>
+								        		</label>
+								        		<label>
+								        			<input type="checkbox" name="themeIdList" value="15"/>
+								            		<span class="icon-box">강</span>
+								        		</label>
+								        		<label>
+								        			<input type="checkbox" name="themeIdList" value="16"/>
+								            		<span class="icon-box">맛집</span>
 								        		</label>
 											</div><br>
 											<br>사진 url:<input name='url' type='text'/><br/>
