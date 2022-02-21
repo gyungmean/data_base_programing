@@ -77,7 +77,7 @@ public class Course_likeDAO {
 	
 	//user_id·Î <Course>courseList ¹ÝÈ¯
 	public List<Course> user_likeCourseList(int user_id) throws SQLException {
-        String sql =  "SELECT c.course_id, course_name, departure, stopover, destination, time, parking, region_id, cl.user_id, t.theme_id, theme_name "
+        String sql =  "SELECT c.course_id, course_name, departure, stopover, destination, time, parking, region_id, cl.user_id, t.theme_id, theme_name, c.url "
 	             + "FROM Course c, THEME_COURSE tc, THEME t, COURSE_LIKE cl "
 	             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id AND c.course_id = cl.course_id "
 	             + "AND cl.user_id=? "
