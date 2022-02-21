@@ -649,7 +649,7 @@ public class CourseDAO {
 		      return null;
 	   }
  public List<Course> findCourseByUserId(int user_id) throws SQLException{
-		   String sql ="SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name "
+		   String sql ="SELECT c.course_id, course_name, time, region_id, t.theme_id, t.theme_name, c.url "
 		             + "FROM Course c, THEME_COURSE tc, THEME t "
 		             + "WHERE c.course_id = tc.course_id AND tc.theme_id = t.theme_id "
 			   		+ "AND user_id=? ";
