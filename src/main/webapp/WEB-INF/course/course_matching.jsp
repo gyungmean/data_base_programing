@@ -199,6 +199,10 @@
 										<div class="theme-wrap">
 											<div class="title">선호테마</div>
 											<div class="row">
+												<label>
+								        			<input type="checkbox" name="themeIdList" value="14"/>
+								            		<span class="icon-box">가족</span>
+								        		</label>
 								        		<label>
 								        			<input type="checkbox" name="themeIdList" value="1"/>
 								            		<span class="icon-box">데이트</span>
@@ -250,6 +254,14 @@
 								        		<label>
 								        			<input type="checkbox" name="themeIdList" value="13"/>
 								            		<span class="icon-box">산</span>
+								        		</label>
+								        		<label>
+								        			<input type="checkbox" name="themeIdList" value="15"/>
+								            		<span class="icon-box">강</span>
+								        		</label>
+								        		<label>
+								        			<input type="checkbox" name="themeIdList" value="16"/>
+								            		<span class="icon-box">맛집</span>
 								        		</label>
 						      				</div>
 										</div>
