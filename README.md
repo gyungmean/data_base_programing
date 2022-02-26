@@ -1,5 +1,11 @@
-# data_base_programing
-2021-2학기 데이터베이스프로그래밍 팀프로젝트
+# 드라이브 코스 추천 서비스
+**2021-2학기 데이터베이스프로그래밍 팀프로젝트**  
+  
+**:computer:DBDEEP**  
+김경민:heart: https://github.com/gyungmean  
+구진희:purple_heart: https://github.com/rnkwg  
+서채연:yellow_heart: https://github.com/chaney1475  
+이예림:blue_heart: https://github.com/yerimm99  
 
 ## 1. 프로젝트의 목적 및 용도
 **코로나 시대의 바람직한 외부활동으로 떠오르고 있는 드라이브! :car:  
@@ -18,7 +24,7 @@
 
 ## 2. 사용한 기술스택
 
-<img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white"/><img src="https://img.shields.io/badge/EclipseIDE-2C2255?style=for-the-badge&logo=eclipseIDE&logoColor=white"/>
+<img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/EclipseIDE-2C2255?style=for-the-badge&logo=eclipseIDE&logoColor=white"/>
 <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"/>  
 ![Generic badge](http://img.shields.io/badge/ERWIN-509EE3?style=for-the-badge)
 ![Generic badge](http://img.shields.io/badge/mybatis-red?style=for-the-badge)  
