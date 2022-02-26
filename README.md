@@ -85,3 +85,21 @@
 - 게시물을 작성할 때는 연결할 코스의 이름을 검색하여 선택 할 수 있습니다. *(WriteCommentsController.java)*
 
 
+## 4. 스크린샷
+###  :white_check_mark:메인화면
+![MAIN](https://user-images.githubusercontent.com/70059000/155846838-44034812-7e49-40d2-a01b-c107ee35eee1.png)
+###  :white_check_mark:마이페이지
+![mypage](https://user-images.githubusercontent.com/70059000/155847333-7c83ff4e-c3ee-4837-89e9-27d499774c7f.png)
+###  :white_check_mark:드라이브 코스 추천
+![코스](https://user-images.githubusercontent.com/70059000/155846849-e9d25f0a-6dce-484e-80fe-6fd151f7f0a3.png)
+![코스매칭](https://user-images.githubusercontent.com/70059000/155847295-25dbea23-901a-41fc-a414-b34e30bdfff9.png)
+###  :white_check_mark:베스트 드라이브 코스 순위
+![코스랭킹](https://user-images.githubusercontent.com/70059000/155846939-18b815c0-cef7-4702-86c9-d9dd4ca7fa12.png)
+###  :white_check_mark:드라이브 코스 입력
+![코스입력](https://user-images.githubusercontent.com/70059000/155846960-fdae975c-e5a7-4178-9145-0b73f0e48f85.png)
+###  :white_check_mark:드라이브 플레이리스트 추천
+![플레이리스트](https://user-images.githubusercontent.com/70059000/155846968-e21d8cb2-528e-43c4-bfc6-6ad25f692174.png)
+###  :white_check_mark:드라이브 코스 주변 핫플
+![게시물](https://user-images.githubusercontent.com/70059000/155847379-698ef3c6-34cf-4cd7-8121-c8d4e7cd0449.png)
+![게시물상세](https://user-images.githubusercontent.com/70059000/155847247-67edea9e-d5d0-4434-98df-c2536197dc42.png)
+
