@@ -88,6 +88,9 @@
 ## 4. 스크린샷
 ###  :white_check_mark:메인화면
 ![MAIN](https://user-images.githubusercontent.com/70059000/155846838-44034812-7e49-40d2-a01b-c107ee35eee1.png)
+###  :white_check_mark:로그인/회원가입
+![로그인](https://user-images.githubusercontent.com/70059000/155847536-4c3760a1-0945-4270-ab2c-cd1a7863034f.png)
+![회원가입](https://user-images.githubusercontent.com/70059000/155847547-7a488622-1183-4fd7-a215-55f2b3e7d6ab.png)
 ###  :white_check_mark:마이페이지
 ![mypage](https://user-images.githubusercontent.com/70059000/155847333-7c83ff4e-c3ee-4837-89e9-27d499774c7f.png)
 ###  :white_check_mark:드라이브 코스 추천
